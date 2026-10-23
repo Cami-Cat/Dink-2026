@@ -1,23 +1,27 @@
 class_name CharacterController extends RigidBody3D
 
+signal player_died()
+signal click_power_updated(to : float)
+signal input_released(_position : Vector2)
+signal clicked_at(_position : Vector2)
+
 var can_drag : bool = true
 var dragging : bool = false
 var click_position : Vector2
-var click_power : float = 0.0 : 
+@export_category("Power")
+@export_group("Click Power")
+@export var click_power : float = 0.0 : 
 	set(a):
 		click_power = a
 		click_power_updated.emit(click_power)
-var max_click_power : float = 1.0
-var min_click_power : float = 0.05
-var shoot_power : float = 30.0
-var distance_for_max_power : float = 450
-var shoot_direction : Vector3
+@export var max_click_power : float = 1.0
+@export var min_click_power : float = 0.05
+@export_group("Distance")
+@export var distance_for_max_power : float = 450
+@export_group("Shoot Power")
+@export var shoot_power : float = 300.0
 
-signal player_died()
-signal input_released()
-signal click_power_updated(to : float)
-signal clicked_at(_position : float)
-signal released_at(_position : float)
+var shoot_direction : Vector3
 
 func _ready() -> void:
 	freeze = true
@@ -32,7 +36,7 @@ func _print_click_power(_click_power : float) -> void:
 	print("Click power: %s" % [_click_power])
 	return
 
-func shoot_player() -> void:
+func shoot_player(_position : Vector2) -> void:
 	if click_power < min_click_power:
 		can_drag = true
 		return
@@ -47,11 +51,13 @@ func _input(event: InputEvent) -> void:
 		if dragging : return
 		dragging = true
 		click_position = get_viewport().get_mouse_position()
+		clicked_at.emit(click_position)
 		return
 	if Input.is_action_just_released("Click"):
+		if !can_drag : return
 		dragging = false
 		can_drag = false
-		input_released.emit()
+		input_released.emit(get_viewport().get_mouse_position())
 	if event is InputEventMouseMotion:
 		if !dragging: return
 		var current_pos : Vector2 = event.position
