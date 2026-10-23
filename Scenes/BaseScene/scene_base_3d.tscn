@@ -1,21 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://doij72a0ut3nk"]
+[gd_scene format=3 uid="uid://doij72a0ut3nk"]
 
 [ext_resource type="Script" uid="uid://8x0m53kjcw14" path="res://Scripts/Scene Management/scene_base_3d.gd" id="2_01f7x"]
 [ext_resource type="Script" uid="uid://5bngowlite7i" path="res://Scripts/Scene Management/world_origin.gd" id="2_ae3c4"]
 [ext_resource type="Script" uid="uid://djivrtbh6jgne" path="res://Scripts/Class/Utility/auto_layer.gd" id="3_rlg4h"]
+[ext_resource type="PackedScene" uid="uid://pq2w1b0i2cjw" path="res://Scenes/Pawn/character_controller.tscn" id="4_gdcde"]
 
-[node name="scene_base_3d" type="Node3D"]
+[sub_resource type="BoxMesh" id="BoxMesh_amx8r"]
+size = Vector3(3.0513306, 1, 12.545166)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ew1vx"]
+
+[sub_resource type="Sky" id="Sky_cjt8b"]
+sky_material = SubResource("ProceduralSkyMaterial_ew1vx")
+
+[sub_resource type="Environment" id="Environment_amx8r"]
+background_mode = 2
+sky = SubResource("Sky_cjt8b")
+
+[node name="scene_base_3d" type="Node3D" unique_id=1135517044]
 script = ExtResource("2_01f7x")
 
-[node name="World Origin" type="Node3D" parent="."]
+[node name="World Origin" type="Node3D" parent="." unique_id=1793727043]
 script = ExtResource("2_ae3c4")
 
-[node name="Main Camera" type="Camera3D" parent="." groups=["MainCamera"]]
+[node name="Main Camera" type="Camera3D" parent="." unique_id=2061059013 groups=["MainCamera"]]
 
-[node name="UpperSceneCanvas" type="CanvasLayer" parent="."]
+[node name="UpperSceneCanvas" type="CanvasLayer" parent="." unique_id=1367143488]
 script = ExtResource("3_rlg4h")
 _layer = 3
 
-[node name="LowerSceneCanvas" type="CanvasLayer" parent="UpperSceneCanvas"]
+[node name="LowerSceneCanvas" type="CanvasLayer" parent="UpperSceneCanvas" unique_id=1829943563]
 script = ExtResource("3_rlg4h")
 _layer = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=471341396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2579651, -3.4722936, -1.9703269)
+mesh = SubResource("BoxMesh_amx8r")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=333920919]
+environment = SubResource("Environment_amx8r")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1639979146]
+transform = Transform3D(1, 0, 0, 0, -0.5743929, 0.81857973, 0, -0.81857973, -0.5743929, 0, 0, 0)
+
+[node name="Character Controller" parent="." unique_id=727937802 instance=ExtResource("4_gdcde")]

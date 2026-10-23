@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://pq2w1b0i2cjw"]
+
+[ext_resource type="Script" uid="uid://b086vgqscpucv" path="res://Scripts/Class/Character/Character_Controller.gd" id="1_ob863"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdcde"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_amx8r"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ew1vx"]
+radius = 0.50689435
+
+[node name="Character Body" type="RigidBody3D" unique_id=33539319]
+script = ExtResource("1_ob863")
+
+[node name="Character Mesh" type="MeshInstance3D" parent="." unique_id=1456666564]
+material_override = SubResource("StandardMaterial3D_gdcde")
+mesh = SubResource("SphereMesh_amx8r")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=601635704]
+shape = SubResource("SphereShape3D_ew1vx")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=372292538]
+transform = Transform3D(1, 0, 0, 0, 0.9984159, 0.05626537, 0, -0.05626537, 0.9984159, 0, 2.0156107, 5.325049)
+current = true
