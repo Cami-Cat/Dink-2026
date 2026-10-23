@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cj7wlws8pjhnm"]
 
-[ext_resource type="Script" uid="uid://sydlavbpat37" path="res://player_trigger.gd" id="1_rc1s5"]
+[ext_resource type="Script" uid="uid://sydlavbpat37" path="res://Scripts/Class/Level/Objects/player_trigger.gd" id="1_rc1s5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_amx8r"]
 
