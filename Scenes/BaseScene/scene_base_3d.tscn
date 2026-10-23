@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bone4bbujrn2j" path="res://Scripts/Viewports/Camera/main_camera.gd" id="3_sg2g5"]
 [ext_resource type="PackedScene" uid="uid://pq2w1b0i2cjw" path="res://Scenes/Pawn/character_controller.tscn" id="4_gdcde"]
 [ext_resource type="PackedScene" uid="uid://hhje0qsflp67" path="res://Scenes/Level/Objects/pin_master.tscn" id="4_wtbj1"]
+[ext_resource type="PackedScene" uid="uid://cj7wlws8pjhnm" path="res://Scenes/Level/Objects/player_trigger.tscn" id="7_ekuh2"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_amx8r"]
 
@@ -63,3 +64,7 @@ script = ExtResource("3_sg2g5")
 follow_target = NodePath("../Character Controller")
 
 [node name="Character Controller" parent="." unique_id=727937802 instance=ExtResource("4_gdcde")]
+
+[node name="Trigger Area" parent="." unique_id=1665584643 instance=ExtResource("7_ekuh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53778183, 2.0920439, -46.001255)
+area_size = Vector3(24.445, 10, 10)
