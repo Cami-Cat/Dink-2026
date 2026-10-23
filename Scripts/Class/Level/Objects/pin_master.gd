@@ -61,3 +61,21 @@ func _spawn_pyramid() -> void:
 			pin_instance.name = str(pins_spawned)
 		current_row += 1
 	return
+
+func get_center_of_nodes() -> Vector3:
+	if self.get_child_count() == 0:
+		push_warning("No pins.")
+		return Vector3.ZERO
+		
+	var position_sum := Vector3.ZERO
+	var valid_node_count := 0
+	
+	for pin in self.get_children():
+		if is_instance_valid(pin) and pin.is_inside_tree():
+			position_sum += pin.global_position
+			valid_node_count += 1
+			
+	if valid_node_count == 0:
+		return Vector3.ZERO
+		
+	return position_sum / valid_node_count
