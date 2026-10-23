@@ -5,6 +5,12 @@
 [ext_resource type="Script" uid="uid://djivrtbh6jgne" path="res://Scripts/Class/Utility/auto_layer.gd" id="3_rlg4h"]
 [ext_resource type="Script" uid="uid://bone4bbujrn2j" path="res://Scripts/Viewports/Camera/main_camera.gd" id="3_sg2g5"]
 [ext_resource type="PackedScene" uid="uid://pq2w1b0i2cjw" path="res://Scenes/Pawn/character_controller.tscn" id="4_gdcde"]
+[ext_resource type="PackedScene" uid="uid://hhje0qsflp67" path="res://Scenes/Level/Objects/pin_master.tscn" id="4_wtbj1"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_amx8r"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wtbj1"]
+points = PackedVector3Array(1.0158731, 0.015873017, 1.0158731, -1.0158731, -0.015873017, -1.0158731, -1.0158731, 0.015873017, -1.0158731, 1.0158731, -0.015873017, -1.0158731, -1.0158731, -0.015873017, 1.0158731, -1.0158731, 0.015873017, 1.0158731, 1.0158731, 0.015873017, -1.0158731, 1.0158731, -0.015873017, 1.0158731)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ew1vx"]
 
@@ -31,6 +37,20 @@ script = ExtResource("2_ae3c4")
 
 [node name="Level" type="Node3D" parent="World Origin" unique_id=2076807864]
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World Origin/Level" unique_id=1666067288]
+transform = Transform3D(623.4565, 0, 0, 0, 1, 0, 0, 0, 623.4565, 0, -1.3244996, 0)
+mesh = SubResource("PlaneMesh_amx8r")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World Origin/Level/MeshInstance3D" unique_id=1125670634]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World Origin/Level/MeshInstance3D/StaticBody3D" unique_id=1753511751]
+shape = SubResource("ConvexPolygonShape3D_wtbj1")
+
+[node name="Pin Master" parent="World Origin/Level" unique_id=57586675 instance=ExtResource("4_wtbj1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.685623)
+total_pins = 36
+pin_spacing = 1.31
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World Origin" unique_id=333920919]
 environment = SubResource("Environment_amx8r")
 
@@ -43,3 +63,40 @@ script = ExtResource("3_sg2g5")
 follow_target = NodePath("../Character Controller")
 
 [node name="Character Controller" parent="." unique_id=727937802 instance=ExtResource("4_gdcde")]
+
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/11" to="World Origin/Level/Pin Master/11/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/12" to="World Origin/Level/Pin Master/12/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/13" to="World Origin/Level/Pin Master/13/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/14" to="World Origin/Level/Pin Master/14/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/15" to="World Origin/Level/Pin Master/15/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/16" to="World Origin/Level/Pin Master/16/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/17" to="World Origin/Level/Pin Master/17/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/18" to="World Origin/Level/Pin Master/18/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/19" to="World Origin/Level/Pin Master/19/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/20" to="World Origin/Level/Pin Master/20/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/22" to="World Origin/Level/Pin Master/22/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/23" to="World Origin/Level/Pin Master/23/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/26" to="World Origin/Level/Pin Master/26/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/27" to="World Origin/Level/Pin Master/27/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/30" to="World Origin/Level/Pin Master/30/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/31" to="World Origin/Level/Pin Master/31/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/34" to="World Origin/Level/Pin Master/34/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/35" to="World Origin/Level/Pin Master/35/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/38" to="World Origin/Level/Pin Master/38/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/39" to="World Origin/Level/Pin Master/39/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/42" to="World Origin/Level/Pin Master/42/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/43" to="World Origin/Level/Pin Master/43/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/46" to="World Origin/Level/Pin Master/46/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/47" to="World Origin/Level/Pin Master/47/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/50" to="World Origin/Level/Pin Master/50/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/51" to="World Origin/Level/Pin Master/51/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/54" to="World Origin/Level/Pin Master/54/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/55" to="World Origin/Level/Pin Master/55/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/58" to="World Origin/Level/Pin Master/58/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/59" to="World Origin/Level/Pin Master/59/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/62" to="World Origin/Level/Pin Master/62/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/63" to="World Origin/Level/Pin Master/63/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/66" to="World Origin/Level/Pin Master/66/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/67" to="World Origin/Level/Pin Master/67/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/70" to="World Origin/Level/Pin Master/70/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]
+[connection signal="sleeping_state_changed" from="World Origin/Level/Pin Master/71" to="World Origin/Level/Pin Master/71/Pin Mesh" method="_on_static_body_3d_sleeping_state_changed"]

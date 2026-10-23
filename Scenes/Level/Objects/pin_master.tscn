@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://hhje0qsflp67"]
+
+[ext_resource type="Script" uid="uid://c0ifex7ketx0d" path="res://Scripts/Class/Level/Objects/pin_master.gd" id="1_r56mt"]
+
+[node name="Pin Master" type="Node3D" unique_id=57586675]
+script = ExtResource("1_r56mt")
