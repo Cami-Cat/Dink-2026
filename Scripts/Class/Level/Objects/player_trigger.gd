@@ -34,7 +34,6 @@ func _create_collision_shape() -> void:
 	if self.get_child_count() > 0:
 		for child in self.get_children():
 			child.free()
-	print("Creating Collision Shape.")
 	collision_shape_3d = CollisionShape3D.new()
 	collision_shape_3d.shape = BoxShape3D.new()
 	add_child(collision_shape_3d)

@@ -9,6 +9,7 @@ class_name Pusher extends ObjectBase
 		move_to = a
 		if !Engine.is_editor_hint() : return
 		draw_collision_at_move_to()
+@export var pusher_power : float = 100.0
 @export var move_over_time : float = 0.5
 
 var preview_collision : CollisionShape3D
@@ -54,3 +55,8 @@ func on_trigger(trigger_state : PlayerTrigger.TRIGGER_STATE) -> void:
 		PlayerTrigger.TRIGGER_STATE.EXIT:
 			return
 	return
+
+
+func _on_launch_body_entered(body: Node3D) -> void:
+	if body is CharacterController:
+		body.apply_impulse(move_to.normalized() * pusher_power, position)
