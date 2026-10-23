@@ -25,6 +25,9 @@ var click_position : Vector2
 
 var shoot_direction : Vector3
 
+func _init() -> void:
+	add_to_group(CHARACTER_GROUP_NAME)
+
 func _ready() -> void:
 	freeze = true
 	connect_signals()

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bi0ximago7j0k"]
+
+[ext_resource type="Script" uid="uid://dkdshoiw3ka22" path="res://Scripts/Class/Level/Objects/pusher.gd" id="1_a7von"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_amx8r"]
+size = Vector3(8, 1, 4)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3r1x1"]
+points = PackedVector3Array(-4, -0.5, -2, -4, 0.5, -2, 4, -0.5, -2, -4, -0.5, 2, -4, 0.5, 2, 4, 0.5, -2, 4, -0.5, 2, 4, 0.5, 2)
+
+[node name="Pusher" type="Node3D" unique_id=2033328119]
+script = ExtResource("1_a7von")
+move_to = Vector3(-1.075, 0, 0)
+move_over_time = null
+required_stage = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1626179788]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019388199, 0, -0.011490941)
+mesh = SubResource("BoxMesh_amx8r")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1414087295]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=551425336]
+shape = SubResource("ConvexPolygonShape3D_3r1x1")

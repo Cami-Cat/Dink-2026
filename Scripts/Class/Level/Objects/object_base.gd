@@ -14,3 +14,5 @@ func _on_scene_completed(new_stage_num : int) -> void:
 	if new_stage_num < required_stage : return
 	spawn_object.emit()
 	return
+
+@abstract func on_trigger(trigger_state : PlayerTrigger.TRIGGER_STATE)
