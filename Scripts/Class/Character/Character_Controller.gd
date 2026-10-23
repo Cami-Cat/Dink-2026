@@ -25,6 +25,10 @@ var click_position : Vector2
 
 var shoot_direction : Vector3
 
+func _reset() -> void:
+	can_drag = true
+	return
+
 func _init() -> void:
 	add_to_group(CHARACTER_GROUP_NAME)
 
@@ -51,7 +55,6 @@ func shoot_player(_position : Vector2) -> void:
 func _process(delta: float) -> void:
 	if position.y < -20:
 		player_died.emit()
-		queue_free()
 		return
 
 func _input(event: InputEvent) -> void:

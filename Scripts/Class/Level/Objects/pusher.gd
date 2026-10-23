@@ -21,7 +21,11 @@ func on_trigger(trigger_state : PlayerTrigger.TRIGGER_STATE) -> void:
 	match trigger_state:
 		PlayerTrigger.TRIGGER_STATE.ENTER:
 			var tween = create_tween()
-			tween.tween_property(self, "position", global_position + move_to, move_over_time).set_trans(tween.TRANS_SINE)
+			tween.tween_property(self, "position", start_position + move_to, move_over_time).set_trans(tween.TRANS_SINE)
+			await tween.finished
+			tween.kill()
+			tween = create_tween()
+			tween.tween_property(self, "position", start_position, move_over_time).set_trans(tween.TRANS_SINE)
 			await tween.finished
 			tween.kill()
 			return
