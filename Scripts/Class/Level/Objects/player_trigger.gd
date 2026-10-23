@@ -17,6 +17,7 @@ var collision_shape_3d : CollisionShape3D
 		area_size = new_size
 		if !collision_shape_3d:
 			_create_collision_shape()
+			return
 		if !collision_shape_3d.shape : return 
 		_update_collision_shape()	
 
@@ -28,19 +29,22 @@ enum TRIGGER_STATE {
 var enabled : bool = false
 
 func _create_collision_shape() -> void:
+	if !is_node_ready():
+		await ready
 	if self.get_child_count() > 0:
 		for child in self.get_children():
-			child.queue_free()
+			child.free()
 	print("Creating Collision Shape.")
 	collision_shape_3d = CollisionShape3D.new()
 	collision_shape_3d.shape = BoxShape3D.new()
+	add_child(collision_shape_3d)
 	collision_shape_3d.debug_fill = true
 	collision_shape_3d.debug_color = Color(0.875, 0.0, 0.236, 1.0)
-	add_child(collision_shape_3d)
+	collision_shape_3d.owner = get_tree().edited_scene_root
 	_update_collision_shape()
 
 func _update_collision_shape() -> void:
-	print("Updating Size To: %s" % [area_size])
+	if !collision_shape_3d : return
 	collision_shape_3d.shape.size = area_size
 	return
 

@@ -22,6 +22,9 @@ sky_material = SubResource("ProceduralSkyMaterial_ew1vx")
 background_mode = 2
 sky = SubResource("Sky_cjt8b")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ekuh2"]
+size = Vector3(24.445, 12.495, 10)
+
 [node name="scene_base_3d" type="Node3D" unique_id=1135517044]
 script = ExtResource("2_01f7x")
 
@@ -66,5 +69,9 @@ follow_target = NodePath("../Character Controller")
 [node name="Character Controller" parent="." unique_id=727937802 instance=ExtResource("4_gdcde")]
 
 [node name="Trigger Area" parent="." unique_id=1665584643 instance=ExtResource("7_ekuh2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53778183, 2.0920439, -46.001255)
-area_size = Vector3(24.445, 10, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3991729, 2.0920439, -46.001255)
+area_size = Vector3(24.445, 12.495, 10)
+
+[node name="@CollisionShape3D@179003" type="CollisionShape3D" parent="Trigger Area" unique_id=1515585395]
+shape = SubResource("BoxShape3D_ekuh2")
+debug_color = Color(0.875, 0, 0.236, 1)
