@@ -1,0 +1,105 @@
+78098b89c88a74ebe8c20117b8754620
+::res://::1792770517
+::res://Assets/::1792770490
+::res://Assets/Audio/::1792770490
+Audio Attributions.txt::TextFile::-1::1792770470::0::1::::<><><>0<>0<><>::
+Audio_Bus.tres::AudioBusLayout::1950293425157242337::1792770470::0::1::::<><><>0<>0<><>::
+::res://Assets/Meshes/::1792770490
+::res://Assets/Sprites/::1792770490
+icon.svg::CompressedTexture2D::7561169141027132548::1792770470::1792770470::1::::<><><>0<>0<>3557d75ae27d82118d1e0d4376112b74<>res://.godot/imported/icon.svg-937281dbc6e7ba0435124e30fe85aebc.ctex::
+::res://Misc/::1792770490
+Attributions.txt::TextFile::-1::1792770470::0::1::::<><><>0<>0<><>::
+::res://Scenes/::1792770491
+::res://Scenes/BaseScene/::1792770490
+scene_base.tscn::PackedScene::1882132460963438871::1792770470::0::1::::<><><>0<>0<><>::uid://b3unslx74mc8u::::res://Scripts/Scene Management/scene_base.gd<>uid://djivrtbh6jgne::::res://Scripts/Class/Utility/auto_layer.gd
+scene_base_2d.tscn::PackedScene::2059690538034947206::1792770470::0::1::::<><><>0<>0<><>::uid://bhlfsh630kx3r::::res://Scripts/Scene Management/scene_base_2d.gd<>uid://5bngowlite7i::::res://Scripts/Scene Management/world_origin.gd<>uid://djivrtbh6jgne::::res://Scripts/Class/Utility/auto_layer.gd
+scene_base_3d.tscn::PackedScene::8159025901677935404::1792770470::0::1::::<><><>0<>0<><>::uid://8x0m53kjcw14::::res://Scripts/Scene Management/scene_base_3d.gd<>uid://5bngowlite7i::::res://Scripts/Scene Management/world_origin.gd<>uid://djivrtbh6jgne::::res://Scripts/Class/Utility/auto_layer.gd
+scene_base_multi_viewport.tscn::PackedScene::1670782687938194103::1792770470::0::1::::<><><>0<>0<><>::uid://cnp2oeiooqh77::::res://Scripts/Viewports/world_viewport.gd<>uid://c1w13jal8gato::::res://Scripts/Scene Management/scene_base_multi_viewport.gd<>uid://djivrtbh6jgne::::res://Scripts/Class/Utility/auto_layer.gd
+::res://Scenes/CanvasLayers/::1792770490
+debug_canvas_layer.tscn::PackedScene::1933432273888488643::1792770470::0::1::::<><><>0<>0<><>::uid://3m6nw2c2fmje::::res://Scripts/Debug/debug_canvas_layer.gd
+::res://Scenes/Components/::1792770490
+audio_component.tscn::PackedScene::5896140794860334069::1792770470::0::1::::<><><>0<>0<><>::uid://qs8cl6tsq7ss::::res://Scripts/Components/audio_component.gd
+::res://Scenes/Core/::1792770490
+::res://Scenes/Core/GameCore/::1792770490
+game_core.tscn::PackedScene::8127761953006061957::1792770470::0::1::::<><><>0<>0<><>::uid://c0mbica7un2bt::::res://Scripts/Class/Managers/Core/game_core.gd<>uid://2stl2hmc1o4b::::res://Scenes/CanvasLayers/debug_canvas_layer.tscn
+::res://Scenes/Managers/::1792770490
+::res://Scenes/Managers/GameManager/::1792770490
+game_manager.tscn::PackedScene::8341160832478074048::1792770470::0::1::::<><><>0<>0<><>::uid://bpbcbw6dnkant::::res://Scripts/Class/Managers/Sub Managers/game_manager.gd<>uid://c6hxyjb28ypci::::res://Scripts/Class/Bus/signal_bus.gd
+::res://Scenes/Managers/SceneManager/::1792770490
+scene_manager.tscn::PackedScene::2241916944920173811::1792770470::0::1::::<><><>0<>0<><>::uid://bm7houvwrwfkv::::res://Scripts/Class/Managers/Core/scene_manager.gd<>uid://djivrtbh6jgne::::res://Scripts/Class/Utility/auto_layer.gd<>uid://5tcexbhwk8pg::::res://Scenes/Utility/TransitionScreen/transition_screen.tscn
+::res://Scenes/UI/::1792770491
+ui_main.tscn::PackedScene::7083660851063280899::1792770470::0::1::::<><><>0<>0<><>::uid://b33l07rn455xp::::res://Scripts/UI/Menu/ui_main.gd
+::res://Scenes/UI/World Space/::1792770491
+advanced_label_3d.tscn::PackedScene::6672702695583252360::1792770470::0::1::::<><><>0<>0<><>::uid://cx8v62qiljagl::::res://Scripts/UI/World Space/advanced_label_3d.gd
+::res://Scenes/Utility/::1792770491
+::res://Scenes/Utility/FpsCounter/::1792770491
+fps_counter.tscn::PackedScene::8915878594066295593::1792770470::0::1::::<><><>0<>0<><>::uid://cobxxnu1odk1y::::res://Scripts/Debug/fps_counter.gd
+::res://Scenes/Utility/TransitionScreen/::1792770491
+transition_screen.tscn::PackedScene::2145018273558996568::1792770470::0::1::::<><><>0<>0<><>::uid://bqyh7oly0gy8r::::res://Scripts/UI/Utility/transition_screen.gd
+::res://Scripts/::1792770491
+::res://Scripts/Class/::1792770491
+::res://Scripts/Class/Bus/::1792770491
+signal_bus.gd::GDScript::6964585989857742584::1792770470::0::1::::SignalBus<>Node<><>0<>0<><>::
+::res://Scripts/Class/Managers/::1792770491
+::res://Scripts/Class/Managers/Core/::1792770491
+game_core.gd::GDScript::6552410101257637449::1792770470::0::1::::GameCore<>Node<><>0<>0<><>::
+manager_base.gd::GDScript::1939755336264376926::1792770470::0::1::::ManagerBase<>Node<><>0<>0<><>::
+scene_manager.gd::GDScript::3295197999474499773::1792770470::0::1::::SceneManager<>ManagerBase<><>0<>0<><>::
+::res://Scripts/Class/Managers/Sub Managers/::1792770491
+game_manager.gd::GDScript::3441442139353796621::1792770470::0::1::::GameManager<>ManagerBase<><>0<>0<><>::
+input_manager.gd::GDScript::6130997152497593847::1792770470::0::1::::InputManager<>ManagerBase<><>0<>0<><>::
+ui_manager.gd::GDScript::32830812555484670::1792770470::0::1::::UIManager<>ManagerBase<><>0<>0<><>::
+::res://Scripts/Class/Utility/::1792770491
+auto_layer.gd::GDScript::7808783081046844462::1792770470::0::1::::AutoLayer<>CanvasLayer<><>0<>0<><>::
+promise.gd::GDScript::6250754880036376478::1792770470::0::1::::Promise<>RefCounted<><>0<>0<><>::
+::res://Scripts/Components/::1792770491
+audio_component.gd::GDScript::1162188156664479286::1792770470::0::1::::AudioComponent<>Node<><>0<>0<><>::
+::res://Scripts/Debug/::1792770491
+debug_canvas_layer.gd::GDScript::1991966794360733118::1792770470::0::1::::DebugCanvasLayer<>AutoLayer<><>0<>0<><>::
+fps_counter.gd::GDScript::5758987835065956844::1792770470::0::1::::FpsCounter<>Label<><>0<>0<><>::
+::res://Scripts/Globals/::1792770491
+g_fnc.gd::GDScript::4752793837657763885::1792770470::0::1::::<>Node<><>0<>0<><>::
+g_sound.gd::GDScript::6685152599802430356::1792770470::0::1::::<>Node<><>0<>0<><>::
+g_twn.gd::GDScript::8769470918216777967::1792770470::0::1::::<>Node<><>0<>0<><>::
+g_txt.gd::GDScript::6790512657629293096::1792770470::0::1::::<>Node<><>0<>0<><>::
+g_var.gd::GDScript::5353162384047591424::1792770470::0::1::::<>Node<><>0<>0<><>::
+::res://Scripts/Resources/::1792770491
+::res://Scripts/Resources/ColorPalette/::1792770491
+sgoon_editor_color_palette.tres::ColorPalette::2726834075837867933::1792770470::0::1::::<><><>0<>0<><>::
+::res://Scripts/Resources/Materials/::1792770491
+screen_transition_diamond_horizontal.gdshader::Shader::4743822382882122690::1792770470::0::1::::<><><>0<>0<><>::
+screen_transition_material.tres::ShaderMaterial::1458398085691064385::1792770470::0::1::::<><><>0<>0<><>::uid://b8t7cdf0pme87::::res://Scripts/Resources/Materials/screen_transition_diamond_horizontal.gdshader
+screen_transition_simple_diagonal.gdshader::Shader::6130977448359149927::1792770470::0::1::::<><><>0<>0<><>::
+screen_transition_simple_horizontal.gdshader::Shader::267215285272417080::1792770470::0::1::::<><><>0<>0<><>::
+screen_transition_simple_vertical.gdshader::Shader::7349942668624636136::1792770470::0::1::::<><><>0<>0<><>::
+selected_outline.gdshader::Shader::1148402719426268709::1792770470::0::1::::<><><>0<>0<><>::
+::res://Scripts/Resources/Materials/Master Materials/::1792770491
+master_toon_shader_mat.tres::ShaderMaterial::3100719199801091195::1792770470::0::1::::<><><>0<>0<><>::uid://cd3lbvus1e0rp::::res://Scripts/Resources/Materials/Master Materials/Shaders/master_toon_shader.gdshader
+master_vertex_invert_outline.tres::ShaderMaterial::429415446839685094::1792770470::0::1::::<><><>0<>0<><>::uid://dt4itiqpskwr0::::res://Scripts/Resources/Materials/Master Materials/Shaders/master_vertex_invert_outline.gdshader
+::res://Scripts/Resources/Materials/Master Materials/Shaders/::1792770491
+master_outline_f+_shader.gdshader::Shader::6780593151827351810::1792770470::0::1::::<><><>0<>0<><>::
+master_toon_f+_shader.gdshader::Shader::8119432991323953422::1792770470::0::1::::<><><>0<>0<><>::
+master_toon_shader.gdshader::Shader::5041881282867519413::1792770470::0::1::::<><><>0<>0<><>::
+master_vertex_invert_outline.gdshader::Shader::8553237146705652995::1792770470::0::1::::<><><>0<>0<><>::
+::res://Scripts/Scene Management/::1792770491
+scene_base.gd::GDScript::4393817940615971054::1792770470::0::1::::SceneBase<>Node<><>0<>0<><>::
+scene_base_2d.gd::GDScript::2900786890566514501::1792770470::0::1::::SceneBase2D<>SceneBase<><>0<>0<><>::
+scene_base_3d.gd::GDScript::2365253502165978057::1792770470::0::1::::SceneBase3D<>SceneBase<><>0<>0<><>::
+scene_base_multi_viewport.gd::GDScript::6644796729859900852::1792770470::0::1::::SceneBaseMultiViewport<>SceneBase<><>0<>0<><>::
+world_origin.gd::GDScript::2108530492388256720::1792770470::0::1::::WorldOrigin<>Node<><>0<>0<><>::
+::res://Scripts/UI/::1792770491
+::res://Scripts/UI/Buttons/::1792770491
+::res://Scripts/UI/Buttons/Master/::1792770491
+button_base.gd::GDScript::7629458294718663430::1792770470::0::1::::ButtonParent<>Button<><>0<>0<><>::
+::res://Scripts/UI/Menu/::1792770491
+end_screen_ui.gd::GDScript::1544857235997481631::1792770470::0::1::::<>Control<><>0<>0<><>::
+ui_main.gd::GDScript::4410225122079243573::1792770470::0::1::::UiMain<>Control<><>0<>0<><>::
+::res://Scripts/UI/Utility/::1792770491
+transition_screen.gd::GDScript::3559470165797249619::1792770470::0::1::::TransitionScreen<>ColorRect<><>0<>0<><>::
+::res://Scripts/UI/World Space/::1792770491
+advanced_label_3d.gd::GDScript::6456641096629928655::1792770470::0::1::::AdvancedLabel3D<>Label3D<><>0<>0<><>::
+::res://Scripts/Viewports/::1792770491
+world_viewport.gd::GDScript::5717926584018161436::1792770470::0::1::::MainViewport<>SubViewport<><>0<>0<><>::
+::res://Scripts/Viewports/Camera/::1792770491
+main_camera.gd::GDScript::3396196116412213547::1792770470::0::1::::<>Camera3D<><>0<>0<><>::
+sub_camera.gd::GDScript::6419874377448564610::1792770470::0::1::::Sub_Camera<>Camera3D<><>0<>1<><>::
