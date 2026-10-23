@@ -73,3 +73,5 @@ var world_origin:WorldOrigin:
 		return world_origin
 	set(value):
 		world_origin = value
+
+var stage_completion_states : Dictionary[StringName, int] = {}

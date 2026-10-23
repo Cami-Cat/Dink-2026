@@ -1,6 +1,11 @@
 class_name SceneBase3D
 extends SceneBase
 
+@export_group("Stage Data")
+@export var stage_id : StringName = &"Stage"
+@export var stage_num : int = 0
+@export var next_stage : PackedScene
+
 func _ready() -> void:
 	super()
 	_teleport_player_to_spawn_point()
@@ -18,4 +23,9 @@ func _teleport_player_to_spawn_point() -> void:
 	var spawn_point_position : Vector3 = spawn_point.global_position
 	var player : CharacterController = get_tree().get_first_node_in_group(CharacterController.CHARACTER_GROUP_NAME)
 	player.global_position = spawn_point_position
+	return
+
+func _on_stage_complete() -> void:
+	var unique_string = stage_id + "_" + str(stage_num)
+	GVar.stage_completion_states[unique_string] += 1
 	return
