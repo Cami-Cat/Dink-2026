@@ -1,5 +1,7 @@
 class_name CharacterController extends RigidBody3D
 
+const CHARACTER_GROUP_NAME : StringName = &"Character"
+
 signal player_died()
 signal click_power_updated(to : float)
 signal input_released(_position : Vector2)

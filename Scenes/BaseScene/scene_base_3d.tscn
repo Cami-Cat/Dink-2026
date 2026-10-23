@@ -6,12 +6,6 @@
 [ext_resource type="Script" uid="uid://bone4bbujrn2j" path="res://Scripts/Viewports/Camera/main_camera.gd" id="3_sg2g5"]
 [ext_resource type="PackedScene" uid="uid://pq2w1b0i2cjw" path="res://Scenes/Pawn/character_controller.tscn" id="4_gdcde"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_amx8r"]
-size = Vector3(53.241104, 1, 115.62387)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gdcde"]
-points = PackedVector3Array(-27.53825, -1.417649, -58.729546, 27.520702, 2.2529476, 58.729546, 27.520702, -1.417649, 58.729546, 27.520702, 2.2529476, -58.729546, -27.53825, 2.2529476, 58.729546, -27.53825, -1.417649, 58.729546, 27.520702, -1.417649, -58.729546, -27.53825, 2.2529476, -58.729546)
-
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ew1vx"]
 
 [sub_resource type="Sky" id="Sky_cjt8b"]
@@ -24,14 +18,6 @@ sky = SubResource("Sky_cjt8b")
 [node name="scene_base_3d" type="Node3D" unique_id=1135517044]
 script = ExtResource("2_01f7x")
 
-[node name="World Origin" type="Node3D" parent="." unique_id=1793727043]
-script = ExtResource("2_ae3c4")
-
-[node name="Main Camera" type="Camera3D" parent="." unique_id=2061059013 node_paths=PackedStringArray("follow_target") groups=["MainCamera"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.9191556)
-script = ExtResource("3_sg2g5")
-follow_target = NodePath("../Character Controller")
-
 [node name="UpperSceneCanvas" type="CanvasLayer" parent="." unique_id=1367143488]
 script = ExtResource("3_rlg4h")
 _layer = 3
@@ -40,64 +26,20 @@ _layer = 3
 script = ExtResource("3_rlg4h")
 _layer = 4
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=471341396]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.511917, -3.723068, 4.2829685)
-mesh = SubResource("BoxMesh_amx8r")
+[node name="World Origin" type="Node3D" parent="." unique_id=1793727043]
+script = ExtResource("2_ae3c4")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=165956257]
+[node name="Level" type="Node3D" parent="World Origin" unique_id=2076807864]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=389126780]
-shape = SubResource("ConvexPolygonShape3D_gdcde")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1653607017]
-transform = Transform3D(0.9542608, 0.24527782, -0.17095315, -0.25143218, 0.967759, -0.014986988, 0.16176549, 0.05728464, 0.98516524, -3.511917, -3.723068, -21.476126)
-mesh = SubResource("BoxMesh_amx8r")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2" unique_id=1710835528]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D" unique_id=713038558]
-shape = SubResource("ConvexPolygonShape3D_gdcde")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=799634289]
-transform = Transform3D(0.78551495, 0.19498816, -0.5873208, -0.34200394, 0.92774504, -0.14940709, 0.5157513, 0.31822753, 0.79544437, 3.277279, -3.723068, -58.872604)
-mesh = SubResource("BoxMesh_amx8r")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D3" unique_id=1376576393]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D" unique_id=1876859551]
-shape = SubResource("ConvexPolygonShape3D_gdcde")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1456799347]
-transform = Transform3D(0.90182203, 0, -0.43210763, -0.079400666, 0.9829726, -0.16571166, 0.42474997, 0.18375206, 0.8864664, 19.228373, 4.675125, -88.25996)
-mesh = SubResource("BoxMesh_amx8r")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D4" unique_id=1903773516]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D4/StaticBody3D" unique_id=1895118386]
-shape = SubResource("ConvexPolygonShape3D_gdcde")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=2098470035]
-transform = Transform3D(0.79067326, 0.1964438, -0.5798667, -0.34972626, 0.9223125, -0.16441132, 0.5025207, 0.33279032, 0.79794943, 30.359074, 8.943707, -111.09453)
-mesh = SubResource("BoxMesh_amx8r")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D5" unique_id=2122612596]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D5/StaticBody3D" unique_id=572291391]
-shape = SubResource("ConvexPolygonShape3D_gdcde")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=1625809444]
-transform = Transform3D(0.4855346, 0.038336053, -0.8733765, -0.484017, 0.8437319, -0.23204385, 0.72799987, 0.5353943, 0.42821637, 52.64102, 14.601672, -141.36153)
-mesh = SubResource("BoxMesh_amx8r")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D6" unique_id=296266112]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D6/StaticBody3D" unique_id=2125102429]
-shape = SubResource("ConvexPolygonShape3D_gdcde")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=333920919]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World Origin" unique_id=333920919]
 environment = SubResource("Environment_amx8r")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1639979146]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World Origin" unique_id=1639979146]
 transform = Transform3D(1, 0, 0, 0, -0.5743929, 0.81857973, 0, -0.81857973, -0.5743929, 0, 0, 0)
+
+[node name="Main Camera" type="Camera3D" parent="." unique_id=2061059013 node_paths=PackedStringArray("follow_target") groups=["MainCamera"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.9191556)
+script = ExtResource("3_sg2g5")
+follow_target = NodePath("../Character Controller")
 
 [node name="Character Controller" parent="." unique_id=727937802 instance=ExtResource("4_gdcde")]
