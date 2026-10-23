@@ -48,6 +48,12 @@ func shoot_player(_position : Vector2) -> void:
 	apply_impulse(shoot_direction * (shoot_power * click_power), position)
 	return
 
+func _process(delta: float) -> void:
+	if position.y < -20:
+		player_died.emit()
+		queue_free()
+		return
+
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Click"):
 		if !can_drag : return
