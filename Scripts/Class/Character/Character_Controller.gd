@@ -35,7 +35,6 @@ func connect_signals() -> void:
 	return
 
 func _print_click_power(_click_power : float) -> void:
-	print("Click power: %s" % [_click_power])
 	return
 
 func shoot_player(_position : Vector2) -> void:
@@ -44,7 +43,6 @@ func shoot_player(_position : Vector2) -> void:
 		return
 	freeze = false
 	apply_impulse(shoot_direction * (shoot_power * click_power), position)
-	print("Player Launched")
 	return
 
 func _input(event: InputEvent) -> void:

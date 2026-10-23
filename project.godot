@@ -61,5 +61,6 @@ Click={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-viewport/transparent_background=true
+anti_aliasing/screen_space_roughness_limiter/enabled=false
+environment/defaults/default_clear_color=Color(0.9894214, 0.3079732, 0.31234595, 1)
 2d/snap/snap_2d_transforms_to_pixel=true

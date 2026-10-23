@@ -14,5 +14,4 @@ func _process(delta: float) -> void:
 	if self.rotation_degrees.length() > knocked_over_threshold:
 		knocked_over = true
 		pin_knocked_over.emit()
-		print("Knocked Over: %s" % [self.name])
 	return
