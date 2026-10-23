@@ -17,10 +17,10 @@ size = Vector2(20, 500)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cfboo"]
 points = PackedVector3Array(10, 0, 250, -10, 0, 250, 10, 0, -250, -10, 0, -250)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4l7u4"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_kuxhc"]
 size = Vector3(76, 9.345, 1.595)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kuxhc"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_oaptf"]
 size = Vector3(76, 9.345, 1.595)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7as4"]
@@ -73,8 +73,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -87.216
 trigger_on_enter = [NodePath("../Pin Camera")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@64198" type="CollisionShape3D" parent="World Origin/Level/Trigger Area" unique_id=2117052884]
-shape = SubResource("BoxShape3D_4l7u4")
+[node name="@CollisionShape3D@74973" type="CollisionShape3D" parent="World Origin/Level/Trigger Area" unique_id=221400323]
+shape = SubResource("BoxShape3D_kuxhc")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="Trigger Area2" parent="World Origin/Level" unique_id=1637487406 node_paths=PackedStringArray("trigger_on_enter") instance=ExtResource("7_ekuh2")]
@@ -82,15 +82,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -33.168
 trigger_on_enter = [NodePath("../Pusher")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@64200" type="CollisionShape3D" parent="World Origin/Level/Trigger Area2" unique_id=1241866092]
-shape = SubResource("BoxShape3D_kuxhc")
+[node name="@CollisionShape3D@74975" type="CollisionShape3D" parent="World Origin/Level/Trigger Area2" unique_id=1650080659]
+shape = SubResource("BoxShape3D_oaptf")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="Pusher" parent="World Origin/Level" unique_id=2033328119 instance=ExtResource("7_4l7u4")]
-transform = Transform3D(2.0632358, 0, 0, 0, 3.806621, 0, 0, 0, 3.5745676, 42.564003, -0.83243656, -47.586273)
+transform = Transform3D(2.216719, 0, 0, 0, 3.806621, 0, 0, 0, 3.5745676, 42.564003, -0.83243656, -47.586273)
 move_to = Vector3(-40.54, 0, 0)
-move_over_time = 0.5
-required_stage = 0
 
 [node name="SpawnPoint" type="Node3D" parent="World Origin/Level" unique_id=185932641]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3125931, 0.052856445)
