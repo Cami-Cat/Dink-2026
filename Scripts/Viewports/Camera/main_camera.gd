@@ -4,7 +4,7 @@ extends Camera3D
 @export var follow_distance : float = 15.0
 @export var max_follow_distance : float = 15.0
 @export var min_follow_distance : float = 5.0
-@export var scroll_distance_change : float = 2.0
+@export var scroll_distance_change : float = 0.5
 @export var follow_acceleration : float = 50.0
 @export var max_speed : float = 350.0
 @export var rotation_speed : float = 0.5
@@ -12,7 +12,7 @@ extends Camera3D
 var current_speed : float = 20.0
 var is_orbiting : bool = false
 
-var orbit_angle_y: float = 0.0
+var orbit_angle_y: float = PI
 var orbit_angle_x: float = -0.2
 
 func _ready() -> void:
@@ -51,14 +51,16 @@ func _input(event: InputEvent) -> void:
 		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			var tween = create_tween()
-			tween.tween_property(self, "follow_distance", clamp(follow_distance + scroll_distance_change, min_follow_distance, max_follow_distance), 0.1)
-			await tween.finished
-			tween.kill()
+			follow_distance = clampf(follow_distance + scroll_distance_change, min_follow_distance, max_follow_distance)
+			#var tween = create_tween()
+			#tween.tween_property(self, "follow_distance", clamp(follow_distance + scroll_distance_change, min_follow_distance, max_follow_distance), 0.1)
+			#await tween.finished
+			#tween.kill()
 			return
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			var tween = create_tween()
-			tween.tween_property(self, "follow_distance", clamp(follow_distance - scroll_distance_change, min_follow_distance, max_follow_distance), 0.1)
-			await tween.finished
-			tween.kill()
+			follow_distance = clampf(follow_distance - scroll_distance_change, min_follow_distance, max_follow_distance)
+			#var tween = create_tween()
+			#tween.tween_property(self, "follow_distance", clamp(follow_distance - scroll_distance_change, min_follow_distance, max_follow_distance), 0.1)
+			#await tween.finished
+			#tween.kill()
 			return
