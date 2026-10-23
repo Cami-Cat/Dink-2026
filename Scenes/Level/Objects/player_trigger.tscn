@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cj7wlws8pjhnm"]
+
+[ext_resource type="Script" uid="uid://sydlavbpat37" path="res://player_trigger.gd" id="1_rc1s5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_amx8r"]
+
+[node name="Node3D" type="Area3D" unique_id=1665584643]
+script = ExtResource("1_rc1s5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=10710019]
+shape = SubResource("BoxShape3D_amx8r")

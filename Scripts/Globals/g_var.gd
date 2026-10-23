@@ -74,4 +74,4 @@ var world_origin:WorldOrigin:
 	set(value):
 		world_origin = value
 
-var stage_completion_states : Dictionary[StringName, int] = {}
+var total_scene_completions : int = 0
