@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b086vgqscpucv" path="res://Scripts/Class/Character/character_controller.gd" id="1_ob863"]
 [ext_resource type="PackedScene" uid="uid://bqi1fdh88d0bb" path="res://Assets/Meshes/Ball/SM_BowlingBall.fbx" id="2_1ka2p"]
+[ext_resource type="AudioStream" uid="uid://bis6tfl8yyela" path="res://Assets/Audio/SFX/sfx_ball_roll.wav" id="3_vfsgx"]
+[ext_resource type="AudioStream" uid="uid://8jkwtym1xdw1" path="res://Assets/Audio/SFX/sfx_ball_hit_floor.wav" id="4_81367"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ew1vx"]
 radius = 0.53187305
@@ -17,3 +19,10 @@ shape = SubResource("SphereShape3D_ew1vx")
 
 [node name="SM_BowlingBall" parent="." unique_id=1121400198 instance=ExtResource("2_1ka2p")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="RollingSound" type="AudioStreamPlayer3D" parent="." unique_id=433535078]
+stream = ExtResource("3_vfsgx")
+bus = &"SFX"
+
+[node name="BallHitFloorSound" type="AudioStreamPlayer3D" parent="." unique_id=398838941]
+stream = ExtResource("4_81367")
