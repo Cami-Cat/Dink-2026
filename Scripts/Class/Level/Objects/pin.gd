@@ -20,7 +20,6 @@ func _process(_delta: float) -> void:
 		pin_knocked_over.emit()
 	return
 
-
 func _on_explode_timer_timeout() -> void:
 	GVar.world_origin.spawn_pin_explosion_at_location(global_position,linear_velocity.normalized())
 	freeze = true

@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://pq2w1b0i2cjw"]
 
-[ext_resource type="Script" uid="uid://b086vgqscpucv" path="res://Scripts/Class/Character/Character_Controller.gd" id="1_ob863"]
+[ext_resource type="Script" uid="uid://b086vgqscpucv" path="res://Scripts/Class/Character/character_controller.gd" id="1_ob863"]
 [ext_resource type="PackedScene" uid="uid://bqi1fdh88d0bb" path="res://Assets/Meshes/Ball/SM_BowlingBall.fbx" id="2_1ka2p"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ew1vx"]
 radius = 0.53187305
 
 [node name="Character Body" type="RigidBody3D" unique_id=33539319]
+contact_monitor = true
+max_contacts_reported = 5
 script = ExtResource("1_ob863")
 shoot_power = 100.0
 
