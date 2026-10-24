@@ -11,9 +11,9 @@ signal click_power_updated(to : float)
 signal input_released(_position : Vector2)
 signal mouse_moved(_position : Vector2)
 signal clicked_at(_position : Vector2)
-
 signal ball_hit_pin(velocity : float)
 signal ball_hit_obstacle(velocity : float)
+signal player_timed_out
 
 var can_drag : bool = true
 var dragging : bool = false
@@ -43,14 +43,24 @@ var is_grounded: bool = false:
 @export var max_pitch_speed:float = 60.0
 var shoot_direction : Vector3
 
+@export_group("Timeout")
+var timeout_timer : Timer
+@export var timeout_length : float = 2.0 #s
+var timing_out : bool = false
+
 func _reset() -> void:
 	can_drag = true
+	timing_out = false
 	return
 
 func _init() -> void:
 	add_to_group(CHARACTER_GROUP_NAME)
 
 func _ready() -> void:
+	timeout_timer = Timer.new()
+	timeout_timer.timeout.connect(_on_timer_timeout)
+	timeout_timer.one_shot = true
+	add_child(timeout_timer)
 	freeze = true
 	connect_signals()
 
@@ -82,6 +92,9 @@ func _process(_delta: float) -> void:
 				rolling_sound.play()
 		else:
 			if rolling_sound.playing:
+				if !timing_out && !can_drag:
+					timing_out = true
+					timeout_timer.start(timeout_length)
 				rolling_sound.stop()
 	return
 
@@ -125,9 +138,15 @@ func _on_body_entered(body : Node3D) -> void:
 	if is_zero_approx(linear_velocity.length()) : return
 	if body is Pin:
 		ball_hit_pin.emit(linear_velocity.length())
+		timing_out = true
+		timeout_timer.start(timeout_length)
 	else:
 		ball_hit_obstacle.emit(linear_velocity.length())
 	print("Ball Velocity: %s" % linear_velocity.length())
+	return
+
+func _on_timer_timeout() -> void:
+	player_timed_out.emit()
 	return
 
 func _on_body_exited(body : Node3D) -> void:
