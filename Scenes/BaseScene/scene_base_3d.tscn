@@ -67,7 +67,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -87.216
 trigger_on_enter = [NodePath("../Pin Camera")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@20255" type="CollisionShape3D" parent="World Origin/Level/Trigger Area" unique_id=931369464]
+[node name="@CollisionShape3D@45760" type="CollisionShape3D" parent="World Origin/Level/Trigger Area" unique_id=1958979265]
 shape = SubResource("BoxShape3D_oaptf")
 debug_color = Color(0.875, 0, 0.236, 1)
 
@@ -76,13 +76,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -33.168
 trigger_on_enter = [NodePath("../Pusher")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@20257" type="CollisionShape3D" parent="World Origin/Level/Trigger Area2" unique_id=1236649019]
+[node name="@CollisionShape3D@45762" type="CollisionShape3D" parent="World Origin/Level/Trigger Area2" unique_id=1331473514]
 shape = SubResource("BoxShape3D_lvya6")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="Pusher" parent="World Origin/Level" unique_id=2033328119 instance=ExtResource("7_4l7u4")]
 transform = Transform3D(2.216719, 0, 0, 0, 10.656862, 0, 0, 0, 3.5745676, 42.564003, 4.535224, -47.586273)
 move_to = Vector3(-40.54, 0, 0)
+required_stage = 1
 
 [node name="SpawnPoint" type="Node3D" parent="World Origin/Level" unique_id=185932641]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2797402, 0.052856445)
