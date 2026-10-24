@@ -26,7 +26,7 @@ func _connect_pins() -> void:
 	var pin_master : PinMaster = get_tree().get_first_node_in_group(PinMaster.PIN_GROUP)
 	if !pin_master : return
 	pin_master.pin_knocked_over.connect(_on_pin_knocked_over)
-	required_pins = pin_master.total_pins * required_pin_exponent
+	required_pins = round(pin_master.total_pins * required_pin_exponent)
 	return
 
 func _connect_player() -> void:

@@ -8,7 +8,7 @@ data = PackedVector3Array(0.7485, 0.1156, 1, 0.7888, 0.0989, -1, 0.7888, 0.0989,
 [node name="Lane" type="MeshInstance3D" unique_id=18777108]
 mesh = ExtResource("1_toqg7")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=328481172]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=493163018]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=777086892]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=98469160]
 shape = SubResource("ConcavePolygonShape3D_toqg7")
