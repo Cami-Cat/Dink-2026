@@ -6,7 +6,6 @@ extends SceneBase
 const SCENE_GROUP : StringName = &"Scene"
 
 signal scene_completed(new_stage : int)
-signal required_pins_increased(new_count : int)
 signal knocked_over_pins_increased(new_count : int)
 
 var stage_num : int = 0
@@ -20,7 +19,6 @@ var ball_launches : int = 0
 var stage_completed : bool = false
 var camera_pause_position : Transform3D
 
-signal scene_completed(new_stage : int)
 signal required_pins_changed(new_amount : int)
 
 func _init() -> void:
@@ -86,7 +84,7 @@ func _on_stage_complete() -> void:
 	GVar.total_scene_completions += 1
 	stage_num = GVar.total_scene_completions
 	required_pins += clamp(required_pins + 1, 0, 10)
-	required_pins_increased.emit(required_pins)
+	required_pins_changed.emit(required_pins)
 	_reset()
 	return
 
