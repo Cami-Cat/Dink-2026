@@ -1,5 +1,8 @@
 @tool class_name PinMaster extends Node3D
 
+signal pin_knocked_over(current_knocked_over_amount : int)
+
+const PIN_GROUP : StringName = &"Pins"
 const PIN_SCENE : PackedScene = preload("res://Scenes/Level/Objects/pin.tscn")
 @export_group("Pin Distribution")
 @export var total_pins : int = 10 :
@@ -12,6 +15,16 @@ const PIN_SCENE : PackedScene = preload("res://Scenes/Level/Objects/pin.tscn")
 		pin_spacing = new_spacing
 		_clear_children()
 		_spawn_pyramid()
+
+var pins_knocked_over : int = 0
+
+func _init() -> void:
+	add_to_group(PIN_GROUP)
+
+func _reset() -> void:
+	pins_knocked_over = 0
+	_ready()
+	return
 
 func _ready() -> void:
 	if !PIN_SCENE:
@@ -57,6 +70,8 @@ func _spawn_pyramid() -> void:
 			var local_z = z_center_offset - ((current_row - 1) * row_depth_spacing)
 			
 			pin_instance.position = Vector3(local_x, 0.0, local_z)
+			if !Engine.is_editor_hint():
+				pin_instance.pin_knocked_over.connect(_on_pin_knocked_over)
 			pins_spawned += 1
 			pin_instance.name = str(pins_spawned)
 		current_row += 1
@@ -64,7 +79,6 @@ func _spawn_pyramid() -> void:
 
 func get_center_of_nodes() -> Vector3:
 	if self.get_child_count() == 0:
-		push_warning("No pins.")
 		return Vector3.ZERO
 		
 	var position_sum := Vector3.ZERO
@@ -79,3 +93,8 @@ func get_center_of_nodes() -> Vector3:
 		return Vector3.ZERO
 		
 	return position_sum / valid_node_count
+
+func _on_pin_knocked_over() -> void:
+	pins_knocked_over += 1
+	pin_knocked_over.emit(pins_knocked_over)
+	return

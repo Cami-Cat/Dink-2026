@@ -9,6 +9,8 @@
 mass = 0.01
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, 0, -0.5)
+contact_monitor = true
+max_contacts_reported = 4
 script = ExtResource("1_wlm6i")
 
 [node name="SM_BowlingPin" parent="." unique_id=956160220 instance=ExtResource("2_76xi8")]

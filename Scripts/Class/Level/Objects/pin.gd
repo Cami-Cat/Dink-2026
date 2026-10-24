@@ -1,6 +1,6 @@
 class_name Pin extends RigidBody3D
 
-signal pin_knocked_over()
+signal pin_knocked_over
 
 @onready var explode_timer: Timer = $ExplodeTimer
 
@@ -19,7 +19,6 @@ func _process(_delta: float) -> void:
 		explode_timer.start()
 		pin_knocked_over.emit()
 	return
-
 
 func _on_explode_timer_timeout() -> void:
 	GVar.world_origin.spawn_pin_explosion_at_location(global_position,linear_velocity.normalized())
