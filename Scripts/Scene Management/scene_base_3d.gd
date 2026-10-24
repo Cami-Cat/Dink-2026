@@ -4,13 +4,17 @@ extends SceneBase
 const SCENE_GROUP : StringName = &"Scene"
 
 var stage_num : int = 0
-var required_pins : int = 0
+var required_pins : int = 0:
+	set(a):
+		required_pins = a
+		required_pins_changed.emit(required_pins)
 var required_pin_exponent : float = 0.8
 var time_before_reset : float = 2.0
 var ball_launches : int = 0
 var stage_completed : bool = false
 
 signal scene_completed(new_stage : int)
+signal required_pins_changed(new_amount : int)
 
 func _init() -> void:
 	add_to_group(SCENE_GROUP)
@@ -59,7 +63,7 @@ func _respawn_player() -> void:
 	camera._reset()
 
 func _on_pin_knocked_over(current_amount : int = 0) -> void:
-	if current_amount > required_pins:
+	if current_amount >= required_pins:
 		_on_stage_complete()
 		return
 	return

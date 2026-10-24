@@ -2,6 +2,7 @@ class_name PinTracker
 extends Control
 
 @onready var pin_master:PinMaster = get_tree().get_first_node_in_group(PinMaster.PIN_GROUP)
+@onready var scene:SceneBase3D = get_tree().get_first_node_in_group(SceneBase3D.SCENE_GROUP)
 
 @onready var rich_text_label: RichTextLabel = $NinePatchRect/RichTextLabel
 
@@ -10,14 +11,23 @@ var required:int = 0
 
 func _ready() -> void:
 	pin_master.pin_knocked_over.connect(_handle_pins_knocked_changed)
+	scene.required_pins_changed.connect(_handle_pins_required_changed)
+	scene.scene_completed.connect(_handle_scene_completed)
+	required = scene.required_pins
 	_update_label()
 
+func _handle_scene_completed(_number_compelted_stages:int):
+	knocked = 0
+	_update_label()
+	
 func _handle_pins_required_changed(new_required:int):
 	required = new_required
+	_update_label()
 	pass
 	
 func _handle_pins_knocked_changed(new_total:int):
 	knocked = new_total
+	_update_label()
 	pass
 
 func _update_label():
