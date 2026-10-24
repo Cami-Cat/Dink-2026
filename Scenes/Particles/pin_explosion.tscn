@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b3t3ffkfjc8hy"]
+
+[ext_resource type="Material" uid="uid://cd7jb6p7b27iv" path="res://Scenes/Particles/pin_explosion_material.tres" id="1_clp5i"]
+[ext_resource type="Script" uid="uid://hfhbn0jv1jfq" path="res://Scenes/Particles/pin_explosion.gd" id="1_lebht"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_lebht"]
+
+[node name="PinExplosion" type="GPUParticles3D" unique_id=677699501]
+emitting = false
+amount = 20
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+transform_align = 1
+process_material = ExtResource("1_clp5i")
+draw_pass_1 = SubResource("QuadMesh_lebht")
+script = ExtResource("1_lebht")
