@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://c76m4hlgodjv4"]
+[gd_scene format=3 uid="uid://c76m4hlgodjv4"]
 
 [ext_resource type="Script" uid="uid://b33l07rn455xp" path="res://Scripts/UI/Menu/ui_main.gd" id="1_v7lif"]
+[ext_resource type="PackedScene" uid="uid://b588lkljesnen" path="res://Scenes/UI/Camera/camera_zoom.tscn" id="2_pclsy"]
+[ext_resource type="PackedScene" uid="uid://c5b1bjg5r2xkw" path="res://Scenes/UI/Camera/camera_rotate.tscn" id="3_b2hoh"]
+[ext_resource type="PackedScene" uid="uid://bgvics4yayohv" path="res://Scenes/UI/Game/pin_tracker.tscn" id="4_h3s1k"]
 
-[node name="UiMain" type="Control"]
+[node name="UiMain" type="Control" unique_id=276468403]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +15,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_v7lif")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1215020536]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,3 +23,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="CameraZoom" parent="Control" unique_id=923443839 instance=ExtResource("2_pclsy")]
+layout_mode = 1
+
+[node name="PinTracker" parent="Control" unique_id=1962839099 instance=ExtResource("4_h3s1k")]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -300.0
+offset_right = 300.0
+grow_horizontal = 1
+grow_vertical = 0
+
+[node name="CameraRotate" parent="Control" unique_id=543208834 instance=ExtResource("3_b2hoh")]
+layout_mode = 1
