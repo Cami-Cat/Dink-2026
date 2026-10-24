@@ -67,7 +67,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -87.216
 trigger_on_enter = [NodePath("../Pin Camera")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@25173" type="CollisionShape3D" parent="World Origin/Level/Trigger Area" unique_id=955882650]
+[node name="@CollisionShape3D@37967" type="CollisionShape3D" parent="World Origin/Level/Trigger Area" unique_id=1182281425]
 shape = SubResource("BoxShape3D_yrgde")
 debug_color = Color(0.875, 0, 0.236, 1)
 
@@ -76,7 +76,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -33.168
 trigger_on_enter = [NodePath("../Pusher")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@25175" type="CollisionShape3D" parent="World Origin/Level/Trigger Area2" unique_id=435539406]
+[node name="@CollisionShape3D@37969" type="CollisionShape3D" parent="World Origin/Level/Trigger Area2" unique_id=1012716689]
 shape = SubResource("BoxShape3D_xwa8c")
 debug_color = Color(0.875, 0, 0.236, 1)
 
@@ -85,7 +85,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -60.044
 trigger_on_enter = [NodePath("../Pusher2")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@25177" type="CollisionShape3D" parent="World Origin/Level/Trigger Area3" unique_id=102496888]
+[node name="@CollisionShape3D@37971" type="CollisionShape3D" parent="World Origin/Level/Trigger Area3" unique_id=2228400]
 shape = SubResource("BoxShape3D_7me16")
 debug_color = Color(0.875, 0, 0.236, 1)
 

@@ -3,6 +3,7 @@ class_name CharacterController extends RigidBody3D
 @onready var rolling_sound: AudioStreamPlayer3D = $RollingSound
 @onready var ball_hit_floor_sound: AudioStreamPlayer3D = $BallHitFloorSound
 @onready var ball_grab_sound: AudioStreamPlayer = $BallGrabSound
+@onready var main_camera:FollowCamera = get_tree().get_first_node_in_group("MainCamera")
 
 const CHARACTER_GROUP_NAME : StringName = &"Character"
 
@@ -94,7 +95,7 @@ func _process(_delta: float) -> void:
 			if rolling_sound.playing:
 				if !timing_out && !can_drag:
 					timing_out = true
-					timeout_timer.start(timeout_length)
+					# dep timeout_timer.start(timeout_length)
 				rolling_sound.stop()
 	return
 
@@ -124,21 +125,27 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_released("Click"):
 		if !can_drag : return
 		dragging = false
-		can_drag = false
+		#can_drag = false
 		input_released.emit(get_viewport().get_mouse_position())
 	if event is InputEventMouseMotion:
 		if !dragging: return
-		var current_pos : Vector2 = event.position
-		var distance = click_position - current_pos
-		mouse_moved.emit(current_pos)
-		click_power = clampf((distance.length() / distance_for_max_power), min_click_power, max_click_power)
-		shoot_direction = Vector3(distance.normalized().x, 0.0, distance.normalized().y)
+		var cam_forward:Vector3 = (-main_camera.global_basis.z).slide(Vector3.UP).normalized()
+		var cam_right:Vector3 = (main_camera.global_basis.x).slide(Vector3.UP).normalized()
+		var drag: Vector2 = click_position - event.position
+		var world_drag : Vector3 = cam_right * drag.x - cam_forward * drag.y
+		var direction:Vector3 = world_drag.normalized()
+		
+		mouse_moved.emit(event.position)
+		click_power = clampf((drag.length() / distance_for_max_power), min_click_power, max_click_power)
+		
+		shoot_direction = Vector3(direction.normalized().x, 0.0, direction.normalized().z)
 
 func _on_body_entered(body : Node3D) -> void:
 	if is_zero_approx(linear_velocity.length()) : return
 	if body is Pin:
 		ball_hit_pin.emit(linear_velocity.length())
 		timing_out = true
+		can_drag = false
 		timeout_timer.start(timeout_length)
 	else:
 		ball_hit_obstacle.emit(linear_velocity.length())

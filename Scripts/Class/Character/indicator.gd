@@ -2,6 +2,7 @@ class_name Indicator extends Node3D
 
 @onready var indicator_head: MeshInstance3D = $IndicatorHead
 @onready var indicator_body: MeshInstance3D = $IndicatorHead/IndicatorBody
+@onready var player : CharacterController = get_tree().get_first_node_in_group(CharacterController.CHARACTER_GROUP_NAME)
 
 var M_INDICATOR:StandardMaterial3D = preload("res://Assets/Meshes/Indicator/M_Indicator.tres")
 var last_click_power:float = 1.0
@@ -20,21 +21,23 @@ func _ready() -> void:
 	hide()
 	return
 
+func _physics_process(_delta: float) -> void:
+	global_position = player.global_position #- Vector3(0,0,-1)
+
 func _connect_to_player() -> void:
-	var player : CharacterController = get_tree().get_first_node_in_group(CharacterController.CHARACTER_GROUP_NAME)
-	player.clicked_at.connect(_on_player_click.bind(player.global_position))
+	player.clicked_at.connect(_on_player_click)
 	player.click_power_updated.connect(_on_player_click_power_updated)
 	player.mouse_moved.connect(_on_player_mouse_moved) 
 	player.input_released.connect(_on_player_released)
 
 func _spawn_indicator(at_location : Vector3) -> void:
 	# Some stupid shit just to make it spawn so I can test it.
-	indicator_head.position = at_location - Vector3(0,0,-1)
+	indicator_head.position = at_location# - Vector3(0,0,-1)
 	return
 
-func _on_player_click(click_position : Vector2, character_position : Vector3) -> void:
+func _on_player_click(click_position : Vector2, _character_position : Vector3 = player.global_position) -> void:
 	first_click_position = click_position
-	_spawn_indicator(character_position)
+	#_spawn_indicator(_character_position)
 	show()
 	return
 
