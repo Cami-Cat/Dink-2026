@@ -7,10 +7,11 @@
 radius = 0.53187305
 
 [node name="Character Body" type="RigidBody3D" unique_id=33539319]
+mass = 6.3
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_ob863")
-shoot_power = 100.0
+shoot_power = 450.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=601635704]
 shape = SubResource("SphereShape3D_ew1vx")
