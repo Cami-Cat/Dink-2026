@@ -8,7 +8,7 @@
 script = ExtResource("1_cj8pr")
 
 [node name="IndicatorHead" type="MeshInstance3D" parent="." unique_id=1615227591]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.013528049)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 mesh = ExtResource("1_jvirq")
 
 [node name="IndicatorBody" type="MeshInstance3D" parent="IndicatorHead" unique_id=1510001766]
