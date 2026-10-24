@@ -9,7 +9,7 @@ const CAMERA_GROUP : StringName = &"Camera"
 @export var scroll_distance_change : float = 0.5
 @export var follow_acceleration : float = 100.0
 @export var max_speed : float = 350.0
-@export var rotation_speed : float = 1.0
+@export var rotation_speed : float = 0.35
 
 var current_speed : float = 20.0
 var is_orbiting : bool = false
@@ -46,8 +46,10 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("RightClick"):
 		is_orbiting = true
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if Input.is_action_just_released("RightClick"):
 		is_orbiting = false
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if event is InputEventMouseMotion:
 		if !is_orbiting: return
 		
