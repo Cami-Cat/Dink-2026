@@ -19,6 +19,7 @@ func _ready() -> void:
 	return
 
 func on_trigger(trigger_state : PlayerTrigger.TRIGGER_STATE) -> void:
+	if !enabled : return
 	match trigger_state:
 		PlayerTrigger.TRIGGER_STATE.ENTER:
 			var tween = create_tween()

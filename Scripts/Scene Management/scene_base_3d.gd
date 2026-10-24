@@ -65,9 +65,9 @@ func _on_pin_knocked_over(current_amount : int = 0) -> void:
 	return
 
 func _on_stage_complete() -> void:
+	if stage_completed : return
 	stage_completed = true
 	GVar.total_scene_completions += 1
-	scene_completed.emit(GVar.total_scene_completions)
 	stage_num = GVar.total_scene_completions
 	_reset()
 	return
@@ -85,5 +85,6 @@ func _reset() -> void:
 		ball_launches = 0
 		player.freeze = false
 		camera._reset()
+	scene_completed.emit(GVar.total_scene_completions)
 	stage_completed = false
 	return

@@ -15,7 +15,9 @@ func _ready() -> void:
 	return
 
 func _on_scene_completed(new_stage_num : int) -> void:
-	if new_stage_num < required_stage : return
+	if new_stage_num < required_stage : 
+		enabled = false
+		return
 	enabled = true
 	return
 
