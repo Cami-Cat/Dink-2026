@@ -11,3 +11,17 @@ func spawn_pin_explosion_at_location(location:Vector3,direction:Vector3):
 	new_particle.input_direction = direction
 	add_child(new_particle)
 	new_particle.global_position = location
+
+func create_noise_at_location(location:Vector3,wav_stream:AudioStreamWAV,pitch_scale:float):
+	var new_audio:AudioStreamPlayer3D = AudioStreamPlayer3D.new()
+	new_audio.autoplay = false
+	new_audio.stream = wav_stream
+	new_audio.pitch_scale = pitch_scale
+	new_audio.finished.connect(cleanup_3d_sound.bind(new_audio))
+	new_audio.bus = &"SFX"
+	add_child(new_audio)
+	new_audio.play()
+	new_audio.global_position = location
+	
+func cleanup_3d_sound(audio:AudioStreamPlayer3D):
+	audio.queue_free()

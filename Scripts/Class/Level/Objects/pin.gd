@@ -5,6 +5,7 @@ signal pin_knocked_over
 const SFX_PIN_HIT_1 = preload("uid://be8wsbhha5v8l")
 const SFX_PIN_HIT_2 = preload("uid://ie7ngmeqaw7g")
 const SFX_PIN_HIT_3 = preload("uid://dguc24cwqr0y4")
+const SFX_BANG = preload("uid://na7pyjihudq5")
 
 const hit_sounds:Array[AudioStreamWAV] = [SFX_PIN_HIT_1,SFX_PIN_HIT_2,SFX_PIN_HIT_3]
 
@@ -32,6 +33,7 @@ func _process(_delta: float) -> void:
 
 func _on_explode_timer_timeout() -> void:
 	GVar.world_origin.spawn_pin_explosion_at_location(global_position,linear_velocity.normalized())
+	GVar.world_origin.create_noise_at_location(global_position,SFX_BANG,randf_range(0.9,1.1))
 	freeze = true
 	visible = false
 	await get_tree().create_timer(0.5).timeout
