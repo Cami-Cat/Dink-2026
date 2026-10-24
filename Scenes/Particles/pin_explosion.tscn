@@ -3,15 +3,25 @@
 [ext_resource type="Material" uid="uid://cd7jb6p7b27iv" path="res://Scenes/Particles/pin_explosion_material.tres" id="1_clp5i"]
 [ext_resource type="Script" uid="uid://hfhbn0jv1jfq" path="res://Scenes/Particles/pin_explosion.gd" id="1_lebht"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_lebht"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uaoqk"]
+emission_enabled = true
+emission = Color(1, 0.8400777, 0, 1)
+emission_energy_multiplier = 5.6
+
+[sub_resource type="SphereMesh" id="SphereMesh_clp5i"]
+material = SubResource("StandardMaterial3D_uaoqk")
+radial_segments = 16
+rings = 8
 
 [node name="PinExplosion" type="GPUParticles3D" unique_id=677699501]
 emitting = false
-amount = 20
-lifetime = 2.0
+amount = 6
+lifetime = 0.43
 one_shot = true
 explosiveness = 1.0
+randomness = 1.0
 transform_align = 1
+transform_align_channel_filter = 1
 process_material = ExtResource("1_clp5i")
-draw_pass_1 = SubResource("QuadMesh_lebht")
+draw_pass_1 = SubResource("SphereMesh_clp5i")
 script = ExtResource("1_lebht")

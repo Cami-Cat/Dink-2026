@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cmhrygsh87t0g"]
+
+[sub_resource type="Curve" id="Curve_n1xcw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_n1xcw"]
+curve = SubResource("Curve_n1xcw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n1xcw"]
+emission_shape_scale = Vector3(0.2, 0.2, 0.2)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, -1, 0)
+scale_min = 0.5
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_n1xcw")
+anim_speed_max = 3.35
+sub_emitter_mode = 4
+sub_emitter_amount_at_start = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xu2p1"]
+transparency = 1
+
+[sub_resource type="SphereMesh" id="SphereMesh_h1jv2"]
+material = SubResource("StandardMaterial3D_xu2p1")
+radial_segments = 8
+rings = 4
+
+[node name="BallTrail" type="GPUParticles3D" unique_id=670163059]
+amount = 13
+lifetime = 0.34
+randomness = 1.0
+trail_lifetime = 0.92
+process_material = SubResource("ParticleProcessMaterial_n1xcw")
+draw_pass_1 = SubResource("SphereMesh_h1jv2")

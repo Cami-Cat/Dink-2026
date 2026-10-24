@@ -6,7 +6,7 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wlm6i"]
 
 [node name="Rigid Body Pin" type="RigidBody3D" unique_id=223907227]
-mass = 1.53
+mass = 0.336
 center_of_mass_mode = 1
 contact_monitor = true
 max_contacts_reported = 4
