@@ -11,6 +11,7 @@ script = ExtResource("1_cj8pr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.013528049)
 mesh = ExtResource("1_jvirq")
 
-[node name="IndicatorBody" type="MeshInstance3D" parent="." unique_id=1510001766]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
+[node name="IndicatorBody" type="MeshInstance3D" parent="IndicatorHead" unique_id=1510001766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.81352806)
 mesh = ExtResource("2_cj8pr")
+skeleton = NodePath("../..")
