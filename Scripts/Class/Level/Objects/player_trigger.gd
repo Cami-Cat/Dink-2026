@@ -9,8 +9,8 @@ var collision_shape_3d : CollisionShape3D
 @export_group("Activate On Stage")
 @export var required_stage : int = 0
 @export_group("Override Triggers")
-@export var trigger_on_enter : Array[Node3D]
-@export var trigger_on_exit : Array[Node3D]
+@export var trigger_on_enter : Array[Node]
+@export var trigger_on_exit : Array[Node]
 @export_group("Override Size")
 @export var area_size : Vector3 = Vector3(1.0, 1.0, 1.0):
 	set(new_size):

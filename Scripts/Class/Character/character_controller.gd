@@ -1,5 +1,6 @@
 class_name CharacterController extends RigidBody3D
 
+@onready var crowd_yay_sound: AudioStreamPlayer = $CrowdYaySound
 @onready var rolling_sound: AudioStreamPlayer3D = $RollingSound
 @onready var ball_hit_floor_sound: AudioStreamPlayer3D = $BallHitFloorSound
 @onready var ball_grab_sound: AudioStreamPlayer = $BallGrabSound
@@ -17,6 +18,7 @@ signal ball_hit_obstacle(velocity : float)
 signal player_timed_out
 
 var can_drag : bool = true
+var has_hit_pin_sound : bool = false
 var dragging : bool = false
 var click_position : Vector2
 var is_grounded: bool = false:
@@ -50,6 +52,7 @@ var timeout_timer : Timer
 var timing_out : bool = false
 
 func _reset() -> void:
+	has_hit_pin_sound = false
 	can_drag = true
 	timing_out = false
 	return
@@ -165,3 +168,6 @@ func _on_body_exited(body : Node3D) -> void:
 func _on_ball_hit_pin(velocity: float) -> void:
 	$BallHit.restart()
 	$BallHit.emitting = true
+	if not has_hit_pin_sound:
+		crowd_yay_sound.play()
+		has_hit_pin_sound = true

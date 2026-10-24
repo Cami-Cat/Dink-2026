@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bn67k5tcjhbbw"]
+
+[ext_resource type="Script" uid="uid://b3f5fp6kkfh3q" path="res://Scenes/Utility/triggered_audio.gd" id="1_ip5o4"]
+
+[node name="TriggeredAudio" type="AudioStreamPlayer" unique_id=1755318309]
+script = ExtResource("1_ip5o4")

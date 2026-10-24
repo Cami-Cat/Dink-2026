@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://8jkwtym1xdw1" path="res://Assets/Audio/SFX/sfx_ball_hit_floor.wav" id="4_81367"]
 [ext_resource type="PackedScene" uid="uid://cmhrygsh87t0g" path="res://Scenes/Particles/ball trail.tscn" id="6_0yapv"]
 [ext_resource type="PackedScene" uid="uid://l2t7628l77yk" path="res://Scenes/Particles/ball_hit.tscn" id="7_h1jv2"]
+[ext_resource type="AudioStream" uid="uid://cjpioob3ua4u1" path="res://Assets/Audio/SFX/Crowd/CrowdYay.wav" id="8_pbfh4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ew1vx"]
 radius = 0.53187305
@@ -40,5 +41,9 @@ bus = &"SFX"
 [node name="BallTrail" parent="." unique_id=670163059 instance=ExtResource("6_0yapv")]
 
 [node name="BallHit" parent="." unique_id=1735471983 instance=ExtResource("7_h1jv2")]
+
+[node name="CrowdYaySound" type="AudioStreamPlayer" parent="." unique_id=1461369327]
+stream = ExtResource("8_pbfh4")
+bus = &"SFX"
 
 [connection signal="ball_hit_pin" from="." to="." method="_on_ball_hit_pin"]
