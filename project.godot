@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Template"
 run/main_scene="uid://dn2fb08j70uan"
-config/features=PackedStringArray("4.7", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 
 [audio]
 
@@ -63,8 +63,12 @@ RightClick={
 ]
 }
 
+[physics]
+
+jolt_physics_3d/simulation/sleep_velocity_threshold=0.04
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-anti_aliasing/screen_space_roughness_limiter/enabled=false
+anti_aliasing/quality/msaa_3d=2
 2d/snap/snap_2d_transforms_to_pixel=true
