@@ -14,10 +14,12 @@ var start_position : Vector3
 
 func _ready() -> void:
 	super()
+	if !enabled : hide()
 	start_position = global_position
 	return
-	
+
 func on_trigger(trigger_state : PlayerTrigger.TRIGGER_STATE) -> void:
+	if !enabled : return
 	match trigger_state:
 		PlayerTrigger.TRIGGER_STATE.ENTER:
 			var tween = create_tween()
@@ -37,3 +39,8 @@ func on_trigger(trigger_state : PlayerTrigger.TRIGGER_STATE) -> void:
 func _on_launch_body_entered(body: Node3D) -> void:
 	if body is CharacterController:
 		body.apply_impulse(move_to.normalized() * pusher_power, position)
+
+func _on_scene_completed(new_stage_num : int) -> void:
+	super(new_stage_num)
+	if enabled:
+		show()

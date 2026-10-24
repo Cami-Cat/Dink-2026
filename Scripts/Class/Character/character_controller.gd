@@ -20,8 +20,8 @@ var click_position : Vector2
 	set(a):
 		click_power = a
 		click_power_updated.emit(click_power)
-@export var max_click_power : float = 1.0
-@export var min_click_power : float = 0.05
+@export var max_click_power : float = 1.5
+@export var min_click_power : float = 0.5
 @export_group("Distance")
 @export var distance_for_max_power : float = 450
 @export_group("Shoot Power")
@@ -52,7 +52,7 @@ func _print_click_power(_click_power : float) -> void:
 
 func shoot_player(_position : Vector2) -> void:
 	if click_power < min_click_power:
-		can_drag = true
+		click_power = min_click_power
 		return
 	freeze = false
 	apply_impulse(shoot_direction * (shoot_power * click_power), position)
