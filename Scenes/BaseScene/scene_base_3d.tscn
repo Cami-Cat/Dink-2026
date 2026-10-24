@@ -10,18 +10,20 @@
 [ext_resource type="PackedScene" uid="uid://bi0ximago7j0k" path="res://Scenes/Level/Objects/pusher.tscn" id="7_4l7u4"]
 [ext_resource type="PackedScene" uid="uid://cj7wlws8pjhnm" path="res://Scenes/Level/Objects/player_trigger.tscn" id="7_ekuh2"]
 [ext_resource type="Script" uid="uid://bdiapaiq85cr7" path="res://Scripts/Class/Level/Utility/spawn_point.gd" id="8_kuxhc"]
+[ext_resource type="PackedScene" uid="uid://i1rofqngokbh" path="res://Assets/Meshes/Deck/SM_BDeckTele.glb" id="9_7me16"]
 [ext_resource type="PackedScene" uid="uid://ccpxqijd2y42x" path="res://Scenes/Level/Objects/lane.tscn" id="9_lvya6"]
+[ext_resource type="PackedScene" uid="uid://bikgoism5k301" path="res://Assets/Meshes/Deck/SM_BDeckFloor.glb" id="10_1a0v1"]
 [ext_resource type="Texture2D" uid="uid://f8opek27vkp" path="res://Assets/Textures/Skybox/skybox-night.png" id="10_b2ccu"]
 [ext_resource type="PackedScene" uid="uid://dakaq42x0xfh1" path="res://Scenes/Pawn/indicator.tscn" id="11_oaptf"]
 [ext_resource type="Script" uid="uid://8oxr6d7cduq1" path="res://CameraShakePlugin/addons/CameraShake3D/CameraShake3D/CameraShake3DNode.gd" id="12_yrgde"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xwa8c"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_17h01"]
 size = Vector3(76, 9.345, 1.595)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7me16"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_4qkh6"]
 size = Vector3(76, 9.345, 1.595)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1a0v1"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_4r2jv"]
 size = Vector3(76, 9.345, 1.595)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6opk0"]
@@ -54,13 +56,13 @@ script = ExtResource("2_ae3c4")
 [node name="Level" type="Node3D" parent="World Origin" unique_id=2076807864]
 
 [node name="Pin Camera" type="Camera3D" parent="World Origin/Level" unique_id=1902897654 node_paths=PackedStringArray("pin_master")]
-transform = Transform3D(-0.022961851, -0.45593363, 0.8897175, -0.01176283, 0.8900138, 0.45578182, -0.9996673, -2.0431283e-09, -0.025799436, 31.245255, 14.361302, -100.8804)
+transform = Transform3D(-0.02296185, -0.45593363, 0.8897176, -0.011762829, 0.8900138, 0.45578188, -0.99966717, -9.316331e-10, -0.02579943, 21.890865, 14.361302, -102.967125)
 fov = 43.5401
 script = ExtResource("4_cfboo")
 pin_master = NodePath("../Pin Master")
 
 [node name="Pin Master" parent="World Origin/Level" unique_id=57586675 instance=ExtResource("4_wtbj1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100.8804)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -95.8804)
 pin_spacing = 1.575
 
 [node name="Trigger Area" parent="World Origin/Level" unique_id=1665584643 node_paths=PackedStringArray("trigger_on_enter") instance=ExtResource("7_ekuh2")]
@@ -68,8 +70,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -87.216
 trigger_on_enter = [NodePath("../Pin Camera")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@50037" type="CollisionShape3D" parent="World Origin/Level/Trigger Area" unique_id=2125440424]
-shape = SubResource("BoxShape3D_xwa8c")
+[node name="@CollisionShape3D@19144" type="CollisionShape3D" parent="World Origin/Level/Trigger Area" unique_id=592930981]
+shape = SubResource("BoxShape3D_17h01")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="Trigger Area2" parent="World Origin/Level" unique_id=1637487406 node_paths=PackedStringArray("trigger_on_enter") instance=ExtResource("7_ekuh2")]
@@ -77,8 +79,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -33.168
 trigger_on_enter = [NodePath("../Pusher")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@50039" type="CollisionShape3D" parent="World Origin/Level/Trigger Area2" unique_id=220659641]
-shape = SubResource("BoxShape3D_7me16")
+[node name="@CollisionShape3D@19146" type="CollisionShape3D" parent="World Origin/Level/Trigger Area2" unique_id=435345598]
+shape = SubResource("BoxShape3D_4qkh6")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="Trigger Area3" parent="World Origin/Level" unique_id=491828337 node_paths=PackedStringArray("trigger_on_enter") instance=ExtResource("7_ekuh2")]
@@ -86,8 +88,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -60.044
 trigger_on_enter = [NodePath("../Pusher2")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@50041" type="CollisionShape3D" parent="World Origin/Level/Trigger Area3" unique_id=594565090]
-shape = SubResource("BoxShape3D_1a0v1")
+[node name="@CollisionShape3D@19148" type="CollisionShape3D" parent="World Origin/Level/Trigger Area3" unique_id=1524653542]
+shape = SubResource("BoxShape3D_4r2jv")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="Pusher" parent="World Origin/Level" unique_id=2033328119 instance=ExtResource("7_4l7u4")]
@@ -135,6 +137,12 @@ spot_angle = 35.0
 [node name="LaneNodes" type="Node3D" parent="World Origin/Level" unique_id=522203106]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13)
 
+[node name="SM_BDeckTele2" parent="World Origin/Level/LaneNodes" unique_id=1281777030 instance=ExtResource("9_7me16")]
+transform = Transform3D(-4.371139e-07, 0, -10, 0, 10, 0, 10, 0, -4.371139e-07, 0.05322075, -1.89, -115.50973)
+
+[node name="SM_BDeckFloor2" parent="World Origin/Level/LaneNodes" unique_id=32223279 instance=ExtResource("10_1a0v1")]
+transform = Transform3D(-4.371139e-07, 0, -10, 0, 10, 0, 10, 0, -4.371139e-07, 0.05322075, -1.89, -115.50973)
+
 [node name="Lane" parent="World Origin/Level/LaneNodes" unique_id=49300588 instance=ExtResource("9_lvya6")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.03866148, -2.250939, -6.8061557)
 
@@ -149,9 +157,6 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.03866148, -2.250939, -66
 
 [node name="Lane5" parent="World Origin/Level/LaneNodes" unique_id=1384024245 instance=ExtResource("9_lvya6")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.03866148, -2.250939, -86.80615)
-
-[node name="Lane6" parent="World Origin/Level/LaneNodes" unique_id=1420056662 instance=ExtResource("9_lvya6")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.03866148, -2.250939, -106.80615)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World Origin" unique_id=333920919]
 environment = SubResource("Environment_d2fsr")
