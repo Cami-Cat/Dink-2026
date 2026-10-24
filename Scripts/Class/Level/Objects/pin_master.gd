@@ -85,23 +85,35 @@ func _spawn_pyramid() -> void:
 	return
 
 func get_center_of_nodes() -> Vector3:
-	if self.get_child_count() == 0:
+	if get_child_count() == 0:
 		return Vector3.ZERO
-		
-	var position_sum := Vector3.ZERO
-	var valid_node_count := 0
-	
-	for pin in self.get_children():
+	var weighted_position_sum: Vector3 = Vector3.ZERO
+	var total_weight: float = 0.0
+	for pin in get_children():
 		if is_instance_valid(pin) and pin.is_inside_tree():
-			position_sum += pin.global_position
-			valid_node_count += 1
+			var weight: float = global_position.distance_to(pin.global_position)
+			if global_position.distance_to(pin.global_position) > 500:
+				weight = 0.0
+			weighted_position_sum += pin.global_position * weight
+			total_weight += weight
+	if total_weight <= 0.0:
+		return global_position
+	return weighted_position_sum / total_weight
+
+func get_furthest_child_distance() -> float:
+	var furthest_distance: float = 0.0
+	for child: Node in get_children():
+		if child is Node3D and is_instance_valid(child) and child.is_inside_tree():
+			var distance: float = global_position.distance_to(
+				(child as Node3D).global_position
+			)
 			
-	if valid_node_count == 0:
-		return Vector3.ZERO
-		
-	return position_sum / valid_node_count
+			furthest_distance = max(furthest_distance, distance)
+	return furthest_distance
+
 
 func _on_pin_knocked_over() -> void:
 	pins_knocked_over += 1
+	GVar.total_pins_knocked += 1
 	pin_knocked_over.emit(pins_knocked_over)
 	return

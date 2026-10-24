@@ -34,7 +34,7 @@ size = Vector3(76, 9.345, 1.595)
 size = Vector3(76, 9.345, 1.595)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_htquy"]
-size = Vector3(14.101763, 0.6346741, 128.22809)
+size = Vector3(14.101763, 0.76838684, 128.22809)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uuwsw"]
 size = Vector3(0.52186966, 0.8204346, 114.52553)
@@ -78,7 +78,7 @@ script = ExtResource("2_ae3c4")
 
 [node name="Pin Camera" type="Camera3D" parent="World Origin/Level" unique_id=1902897654 node_paths=PackedStringArray("pin_master")]
 transform = Transform3D(0.9356842, -0.132834, 0.3268794, 0, 0.9264278, 0.3764725, -0.35283852, -0.35225937, 0.8668438, 9.924216, 11.46455, -73.97075)
-fov = 43.5401
+fov = 40.0
 script = ExtResource("4_cfboo")
 pin_master = NodePath("../Pin Master")
 
@@ -180,7 +180,7 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.03866148, -2.250939, -86
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World Origin/Level/LaneNodes/StaticBody3D" unique_id=1333138614]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015018702, -0.008468628, -47.223495)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015018702, 0.058387756, -47.223495)
 shape = SubResource("BoxShape3D_htquy")
 
 [node name="RailCollision1" type="CollisionShape3D" parent="World Origin/Level/LaneNodes/StaticBody3D" unique_id=2123236963]
