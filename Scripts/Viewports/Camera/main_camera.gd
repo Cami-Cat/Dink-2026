@@ -14,6 +14,8 @@ signal camera_rotating(state:bool)
 @export var max_speed : float = 350.0
 @export var rotation_speed : float = 0.35
 
+var shakePower : float = 1.0
+
 var current_speed : float = 20.0
 var is_orbiting : bool = false
 
@@ -81,3 +83,11 @@ func _reset() -> void:
 	resetting = false
 	current = true
 	return
+
+
+func _on_character_controller_input_released(_position: Vector2) -> void:
+	$Shake_Hit._shake()
+
+
+func _on_character_controller_click_power_updated(to: float):
+	shakePower = to

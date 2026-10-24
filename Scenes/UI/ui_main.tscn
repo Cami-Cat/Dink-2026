@@ -27,16 +27,18 @@ mouse_filter = 2
 [node name="CameraZoom" parent="Control" unique_id=923443839 instance=ExtResource("2_pclsy")]
 layout_mode = 1
 
+[node name="CameraRotate" parent="Control" unique_id=543208834 instance=ExtResource("3_b2hoh")]
+layout_mode = 1
+
 [node name="PinTracker" parent="Control" unique_id=1962839099 instance=ExtResource("4_h3s1k")]
-custom_minimum_size = Vector2(300, 300)
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
-offset_top = -300.0
-offset_right = 300.0
+offset_left = 31.0
+offset_top = -226.0
+offset_right = 231.0
+offset_bottom = -26.0
 grow_horizontal = 1
 grow_vertical = 0
-
-[node name="CameraRotate" parent="Control" unique_id=543208834 instance=ExtResource("3_b2hoh")]
-layout_mode = 1

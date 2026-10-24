@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Template"
 run/main_scene="uid://dn2fb08j70uan"
-config/features=PackedStringArray("4.6", "GL Compatibility")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [audio]
 
@@ -34,6 +34,8 @@ GSound="*res://Scripts/Globals/g_sound.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=4
+window/size/resizable=false
 window/stretch/mode="viewport"
 
 [editor_plugins]
