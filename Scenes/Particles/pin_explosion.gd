@@ -10,6 +10,5 @@ var mat:ParticleProcessMaterial
 func _ready() -> void:
 	amount = base_amount + round((randf_range(0,0.2) * base_amount))
 	mat = process_material.duplicate()
-	print(input_direction)
 	mat.direction = input_direction
 	restart()
