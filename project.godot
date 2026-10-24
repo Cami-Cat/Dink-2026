@@ -67,7 +67,10 @@ RightClick={
 
 [physics]
 
+jolt_physics_3d/simulation/position_steps=4
 jolt_physics_3d/simulation/sleep_velocity_threshold=0.04
+jolt_physics_3d/simulation/continuous_cd_movement_threshold=0.5
+jolt_physics_3d/simulation/continuous_cd_max_penetration=0.2
 
 [rendering]
 
