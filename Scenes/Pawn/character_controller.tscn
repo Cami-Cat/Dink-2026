@@ -11,6 +11,7 @@ radius = 0.53187305
 
 [node name="Character Body" type="RigidBody3D" unique_id=33539319]
 mass = 6.3
+continuous_cd = true
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_ob863")

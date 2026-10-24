@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Template"
 run/main_scene="uid://dn2fb08j70uan"
-config/features=PackedStringArray("4.6", "GL Compatibility")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [audio]
 
@@ -65,7 +65,10 @@ RightClick={
 
 [physics]
 
+jolt_physics_3d/simulation/position_steps=4
 jolt_physics_3d/simulation/sleep_velocity_threshold=0.04
+jolt_physics_3d/simulation/continuous_cd_movement_threshold=0.5
+jolt_physics_3d/simulation/continuous_cd_max_penetration=0.2
 
 [rendering]
 
