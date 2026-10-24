@@ -29,9 +29,11 @@ points = PackedVector3Array(14.999998, 0.1, 104.999985, 14.999998, -0.1, 104.999
 sky_material = SubResource("ProceduralSkyMaterial_b7as4")
 
 [sub_resource type="Environment" id="Environment_d2fsr"]
-background_mode = 2
+background_mode = 1
 sky = SubResource("Sky_3yfhr")
 ambient_light_source = 3
+glow_enabled = true
+glow_bloom = 0.2
 
 [node name="scene_base_3d" type="Node3D" unique_id=1135517044]
 script = ExtResource("2_01f7x")
@@ -64,7 +66,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -87.216
 trigger_on_enter = [NodePath("../Pin Camera")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@86650" type="CollisionShape3D" parent="World Origin/Level/Trigger Area" unique_id=1247509864]
+[node name="@CollisionShape3D@20040" type="CollisionShape3D" parent="World Origin/Level/Trigger Area" unique_id=1655722844]
 shape = SubResource("BoxShape3D_kuxhc")
 debug_color = Color(0.875, 0, 0.236, 1)
 
@@ -73,7 +75,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -33.168
 trigger_on_enter = [NodePath("../Pusher")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@86652" type="CollisionShape3D" parent="World Origin/Level/Trigger Area2" unique_id=928659155]
+[node name="@CollisionShape3D@20042" type="CollisionShape3D" parent="World Origin/Level/Trigger Area2" unique_id=1971067292]
 shape = SubResource("BoxShape3D_oaptf")
 debug_color = Color(0.875, 0, 0.236, 1)
 
@@ -95,14 +97,42 @@ mesh = SubResource("BoxMesh_amx8r")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World Origin/Level/MeshInstance3D/StaticBody3D" unique_id=868477090]
 shape = SubResource("ConvexPolygonShape3D_kuxhc")
 
+[node name="Lights" type="Node3D" parent="World Origin/Level" unique_id=1493620833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.260849)
+
+[node name="Light1" type="SpotLight3D" parent="World Origin/Level/Lights" unique_id=66871209]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 20, 0)
+light_energy = 60.0
+spot_range = 26.0
+spot_angle = 35.0
+
+[node name="Light2" type="SpotLight3D" parent="World Origin/Level/Lights" unique_id=2021640475]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 20, -30)
+light_energy = 60.0
+spot_range = 26.0
+spot_angle = 35.0
+
+[node name="Light3" type="SpotLight3D" parent="World Origin/Level/Lights" unique_id=1382733763]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 20, -60)
+light_energy = 60.0
+spot_range = 26.0
+spot_angle = 35.0
+
+[node name="Light4" type="SpotLight3D" parent="World Origin/Level/Lights" unique_id=1452267145]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 20, -90)
+light_energy = 60.0
+spot_range = 26.0
+spot_angle = 35.0
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World Origin" unique_id=333920919]
 environment = SubResource("Environment_d2fsr")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="World Origin" unique_id=1639979146]
 transform = Transform3D(1, 0, 0, 0, -0.5743929, 0.81857973, 0, -0.81857973, -0.5743929, 0, 0, 0)
+light_energy = 0.4
 
 [node name="Main Camera" type="Camera3D" parent="." unique_id=2061059013 node_paths=PackedStringArray("follow_target") groups=["MainCamera"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.9191556)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.606749, 4.9191556)
 current = true
 script = ExtResource("3_sg2g5")
 follow_target = NodePath("../Character Controller")
