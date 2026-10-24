@@ -10,10 +10,12 @@ var knocked_over : bool = false
 @export var wait_time_before_explode: float = 3.0
 
 func _ready() -> void:
+	explode_timer.stop()
 	return
 
 func _process(_delta: float) -> void:
 	if knocked_over : return
+	if !is_node_ready() : return
 	if self.rotation_degrees.length() > knocked_over_threshold:
 		knocked_over = true
 		explode_timer.start()

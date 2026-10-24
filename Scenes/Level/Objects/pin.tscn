@@ -6,9 +6,8 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wlm6i"]
 
 [node name="Rigid Body Pin" type="RigidBody3D" unique_id=223907227]
-mass = 0.01
+mass = 1.53
 center_of_mass_mode = 1
-center_of_mass = Vector3(0, 0, -0.5)
 contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_wlm6i")

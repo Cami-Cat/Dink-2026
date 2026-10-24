@@ -8,29 +8,32 @@ const PIN_SCENE : PackedScene = preload("res://Scenes/Level/Objects/pin.tscn")
 @export var total_pins : int = 10 :
 	set(new_pin_count):
 		total_pins = new_pin_count
-		_clear_children()
-		_spawn_pyramid()
+		_reset()
 @export var pin_spacing : float = 0.3 :
 	set(new_spacing):
 		pin_spacing = new_spacing
-		_clear_children()
-		_spawn_pyramid()
+		_reset()
 
+var resetting : bool = false
 var pins_knocked_over : int = 0
 
 func _init() -> void:
 	add_to_group(PIN_GROUP)
 
 func _reset() -> void:
+	if resetting : return
+	resetting = true
 	pins_knocked_over = 0
-	_ready()
+	_clear_children()
+	if !is_node_ready(): await ready
+	call_deferred("_spawn_pyramid")
+	resetting = false
 	return
 
 func _ready() -> void:
 	if !PIN_SCENE:
 		return
-	_clear_children()
-	_spawn_pyramid()
+	_reset()
 	return
 
 func _clear_children() -> void:
@@ -72,9 +75,13 @@ func _spawn_pyramid() -> void:
 			pin_instance.position = Vector3(local_x, 0.0, local_z)
 			if !Engine.is_editor_hint():
 				pin_instance.pin_knocked_over.connect(_on_pin_knocked_over)
+			pin_instance.freeze = true
 			pins_spawned += 1
 			pin_instance.name = str(pins_spawned)
 		current_row += 1
+		for pin in self.get_children():
+			if pin is not Pin: continue
+			pin.freeze = false
 	return
 
 func get_center_of_nodes() -> Vector3:
