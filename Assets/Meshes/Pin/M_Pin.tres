@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c83eo40kk3rre"]
+
+[ext_resource type="Texture2D" uid="uid://30gk8x76qto6" path="res://Assets/Meshes/Pin/T_BowlingPin.png" id="1_nsgbb"]
+
+[resource]
+albedo_texture = ExtResource("1_nsgbb")

@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 	var distance_to_target = global_position.distance_to(target_pos)
 	
 	var target_speed = clamp(distance_to_target * follow_acceleration, -max_speed, max_speed)
-	print(current_speed)
+	#print(current_speed)
 	current_speed = move_toward(current_speed, target_speed, follow_acceleration * delta)
 	
 	global_position = global_position.move_toward(target_pos, current_speed * delta)

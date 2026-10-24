@@ -1,10 +1,7 @@
 [gd_scene format=3 uid="uid://hqfeqgquroda"]
 
 [ext_resource type="Script" uid="uid://xxov05g7kqv" path="res://Scripts/Class/Level/Objects/pin.gd" id="1_wlm6i"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_pxadm"]
-top_radius = 0.49658203
-bottom_radius = 0.49658203
+[ext_resource type="PackedScene" uid="uid://qisf5hbktsnj" path="res://Assets/Meshes/Pin/SM_BowlingPin.fbx" id="2_76xi8"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wlm6i"]
 
@@ -14,9 +11,13 @@ center_of_mass_mode = 1
 center_of_mass = Vector3(0, 0, -0.5)
 script = ExtResource("1_wlm6i")
 
-[node name="Pin Mesh" type="MeshInstance3D" parent="." unique_id=626116383]
-mesh = SubResource("CylinderMesh_pxadm")
-skeleton = NodePath("../..")
+[node name="SM_BowlingPin" parent="." unique_id=956160220 instance=ExtResource("2_76xi8")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=527032086]
 shape = SubResource("CylinderShape3D_wlm6i")
+
+[node name="ExplodeTimer" type="Timer" parent="." unique_id=2039925031]
+one_shot = true
+
+[connection signal="timeout" from="ExplodeTimer" to="." method="_on_explode_timer_timeout"]
