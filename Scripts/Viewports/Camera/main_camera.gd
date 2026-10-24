@@ -2,6 +2,9 @@ class_name FollowCamera extends Camera3D
 
 const CAMERA_GROUP : StringName = &"Camera"
 
+signal zoom_changed(percentage:float)
+signal camera_rotating(state:bool)
+
 @export var follow_target : Node3D
 @export var follow_distance : float = 15.0
 @export var max_follow_distance : float = 15.0
@@ -46,9 +49,11 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("RightClick"):
 		is_orbiting = true
+		camera_rotating.emit(true)
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if Input.is_action_just_released("RightClick"):
 		is_orbiting = false
+		camera_rotating.emit(false)
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if event is InputEventMouseMotion:
 		if !is_orbiting: return
@@ -61,9 +66,11 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			follow_distance = clampf(follow_distance + scroll_distance_change, min_follow_distance, max_follow_distance)
+			zoom_changed.emit((follow_distance - min_follow_distance) / (max_follow_distance - min_follow_distance))
 			return
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			follow_distance = clampf(follow_distance - scroll_distance_change, min_follow_distance, max_follow_distance)
+			zoom_changed.emit((follow_distance - min_follow_distance) / (max_follow_distance - min_follow_distance))
 			return
 	
 func _reset() -> void:

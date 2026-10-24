@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://c5b1bjg5r2xkw"]
+
+[ext_resource type="Script" uid="uid://btvid0sg7xws3" path="res://Scenes/UI/Camera/camera_rotate.gd" id="1_d1abq"]
+[ext_resource type="Texture2D" uid="uid://k4ryrc84jfgx" path="res://Scenes/UI/Camera/T_Camera_Rotate_Icon.png" id="1_icyi1"]
+
+[node name="CameraRotate" type="Control" unique_id=543208834]
+modulate = Color(1, 1, 1, 0.90000004)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d1abq")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=149625342]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 128.0
+grow_horizontal = 0
+texture = ExtResource("1_icyi1")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=943473944]
+layout_mode = 1
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("1_icyi1")
+expand_mode = 1
+flip_h = true
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=1593308390]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("1_icyi1")
+expand_mode = 1
+flip_v = true
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=1077112611]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+offset_right = 128.0
+grow_vertical = 0
+texture = ExtResource("1_icyi1")
+expand_mode = 1
+flip_h = true
+flip_v = true

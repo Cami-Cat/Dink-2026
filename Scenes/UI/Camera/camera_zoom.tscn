@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://b588lkljesnen"]
+
+[ext_resource type="Script" uid="uid://cgh6sdh0mrj0n" path="res://Scenes/UI/Camera/camera_zoom.gd" id="1_lkx47"]
+[ext_resource type="Texture2D" uid="uid://c58jr6gmkm5um" path="res://Scenes/UI/Camera/T_Camera_Zoom_Icon.png" id="1_q01ec"]
+
+[node name="CameraZoom" type="Control" unique_id=923443839]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lkx47")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1921542962]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1597003812]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_q01ec")
+expand_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer" unique_id=1081045579]
+custom_minimum_size = Vector2(50, 500)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=1722239768]
+clip_contents = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="FadeOutTimer" type="Timer" parent="." unique_id=308078732]
+
+[connection signal="timeout" from="FadeOutTimer" to="." method="_on_fade_out_timer_timeout"]
