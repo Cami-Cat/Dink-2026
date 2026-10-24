@@ -47,17 +47,16 @@ func _teleport_player_to_spawn_point() -> void:
 	var player : CharacterController = get_tree().get_first_node_in_group(CharacterController.CHARACTER_GROUP_NAME)
 	if !player :return
 	player.global_position = spawn_point_position
+	player.freeze = true
 	return
 
 func _respawn_player() -> void:
 	if stage_completed : return
 	var player : CharacterController = get_tree().get_first_node_in_group(CharacterController.CHARACTER_GROUP_NAME)
 	var camera : FollowCamera = get_tree().get_first_node_in_group(FollowCamera.CAMERA_GROUP)
-	player.freeze = true
 	_teleport_player_to_spawn_point()
 	player._reset()
 	camera._reset()
-	player.freeze = false
 
 func _on_pin_knocked_over(current_amount : int = 0) -> void:
 	if current_amount > required_pins:
