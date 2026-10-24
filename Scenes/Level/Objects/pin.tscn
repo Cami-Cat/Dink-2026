@@ -21,4 +21,8 @@ shape = SubResource("CylinderShape3D_wlm6i")
 [node name="ExplodeTimer" type="Timer" parent="." unique_id=2039925031]
 one_shot = true
 
+[node name="PinHitSound" type="AudioStreamPlayer3D" parent="." unique_id=1800946652]
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="ExplodeTimer" to="." method="_on_explode_timer_timeout"]

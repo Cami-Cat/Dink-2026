@@ -2,7 +2,7 @@ class_name CharacterController extends RigidBody3D
 
 @onready var rolling_sound: AudioStreamPlayer3D = $RollingSound
 @onready var ball_hit_floor_sound: AudioStreamPlayer3D = $BallHitFloorSound
-
+@onready var ball_grab_sound: AudioStreamPlayer = $BallGrabSound
 
 const CHARACTER_GROUP_NAME : StringName = &"Character"
 
@@ -73,7 +73,6 @@ func shoot_player(_position : Vector2) -> void:
 	return
 
 func _process(_delta: float) -> void:
-	print(is_grounded)
 	if position.y < -20:
 		player_died.emit()
 	if !freeze:
@@ -104,6 +103,7 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Click"):
 		if !can_drag : return
 		if dragging : return
+		ball_grab_sound.play()
 		dragging = true
 		click_position = get_viewport().get_mouse_position()
 		clicked_at.emit(click_position)
@@ -118,7 +118,7 @@ func _input(event: InputEvent) -> void:
 		var current_pos : Vector2 = event.position
 		var distance = click_position - current_pos
 		mouse_moved.emit(current_pos)
-		click_power = clampf((distance.length() / distance_for_max_power), 0.0, 1.0)
+		click_power = clampf((distance.length() / distance_for_max_power), min_click_power, max_click_power)
 		shoot_direction = Vector3(distance.normalized().x, 0.0, distance.normalized().y)
 
 func _on_body_entered(body : Node3D) -> void:

@@ -70,7 +70,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -87.216
 trigger_on_enter = [NodePath("../Pin Camera")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@45760" type="CollisionShape3D" parent="World Origin/Level/Trigger Area" unique_id=1958979265]
+[node name="@CollisionShape3D@29721" type="CollisionShape3D" parent="World Origin/Level/Trigger Area" unique_id=1261320778]
 shape = SubResource("BoxShape3D_oaptf")
 debug_color = Color(0.875, 0, 0.236, 1)
 
@@ -79,7 +79,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -33.168
 trigger_on_enter = [NodePath("../Pusher")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@45762" type="CollisionShape3D" parent="World Origin/Level/Trigger Area2" unique_id=1331473514]
+[node name="@CollisionShape3D@29723" type="CollisionShape3D" parent="World Origin/Level/Trigger Area2" unique_id=1279057066]
 shape = SubResource("BoxShape3D_lvya6")
 debug_color = Color(0.875, 0, 0.236, 1)
 
@@ -88,7 +88,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -60.044
 trigger_on_enter = [NodePath("../Pusher2")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@48981" type="CollisionShape3D" parent="World Origin/Level/Trigger Area3" unique_id=104448051]
+[node name="@CollisionShape3D@29725" type="CollisionShape3D" parent="World Origin/Level/Trigger Area3" unique_id=403194015]
 shape = SubResource("BoxShape3D_b2ccu")
 debug_color = Color(0.875, 0, 0.236, 1)
 
@@ -160,3 +160,14 @@ follow_target = NodePath("../Character Controller")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12554646, 0)
 
 [node name="Indicator" parent="." unique_id=1637378779 instance=ExtResource("11_oaptf")]
+
+[connection signal="body_entered" from="World Origin/Level/Pin Master/1" to="World Origin/Level/Pin Master/1" method="_on_body_entered"]
+[connection signal="body_entered" from="World Origin/Level/Pin Master/2" to="World Origin/Level/Pin Master/2" method="_on_body_entered"]
+[connection signal="body_entered" from="World Origin/Level/Pin Master/3" to="World Origin/Level/Pin Master/3" method="_on_body_entered"]
+[connection signal="body_entered" from="World Origin/Level/Pin Master/4" to="World Origin/Level/Pin Master/4" method="_on_body_entered"]
+[connection signal="body_entered" from="World Origin/Level/Pin Master/5" to="World Origin/Level/Pin Master/5" method="_on_body_entered"]
+[connection signal="body_entered" from="World Origin/Level/Pin Master/6" to="World Origin/Level/Pin Master/6" method="_on_body_entered"]
+[connection signal="body_entered" from="World Origin/Level/Pin Master/7" to="World Origin/Level/Pin Master/7" method="_on_body_entered"]
+[connection signal="body_entered" from="World Origin/Level/Pin Master/8" to="World Origin/Level/Pin Master/8" method="_on_body_entered"]
+[connection signal="body_entered" from="World Origin/Level/Pin Master/9" to="World Origin/Level/Pin Master/9" method="_on_body_entered"]
+[connection signal="body_entered" from="World Origin/Level/Pin Master/10" to="World Origin/Level/Pin Master/10" method="_on_body_entered"]

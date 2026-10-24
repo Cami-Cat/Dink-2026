@@ -2,6 +2,13 @@ class_name Pin extends RigidBody3D
 
 signal pin_knocked_over
 
+const SFX_PIN_HIT_1 = preload("uid://be8wsbhha5v8l")
+const SFX_PIN_HIT_2 = preload("uid://ie7ngmeqaw7g")
+const SFX_PIN_HIT_3 = preload("uid://dguc24cwqr0y4")
+
+const hit_sounds:Array[AudioStreamWAV] = [SFX_PIN_HIT_1,SFX_PIN_HIT_2,SFX_PIN_HIT_3]
+
+@onready var pin_hit_sound: AudioStreamPlayer3D = $PinHitSound
 @onready var explode_timer: Timer = $ExplodeTimer
 
 var knocked_over : bool = false
@@ -11,6 +18,7 @@ var knocked_over : bool = false
 
 func _ready() -> void:
 	explode_timer.stop()
+	pin_hit_sound.stream = hit_sounds.pick_random()
 	return
 
 func _process(_delta: float) -> void:
@@ -28,4 +36,13 @@ func _on_explode_timer_timeout() -> void:
 	visible = false
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
+	pass # Replace with function body.
+
+
+func _on_body_entered(body: Node) -> void:
+	if body is RigidBody3D:
+		var body_speed = body.linear_velocity.length()
+		if body_speed > 1 or linear_velocity.length() > 1:
+			pin_hit_sound.pitch_scale = remap(body_speed , 0,60,0.9,1.3)
+			pin_hit_sound.play()
 	pass # Replace with function body.
