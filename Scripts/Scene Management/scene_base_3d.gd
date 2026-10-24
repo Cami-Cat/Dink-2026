@@ -34,6 +34,7 @@ func _connect_player() -> void:
 	if !player : return
 	player.player_died.connect(_respawn_player)
 	player.input_released.connect(_on_ball_launch)
+	player.player_timed_out.connect(_respawn_player)
 	return
 
 func _on_ball_launch(_released_at : Vector2) -> void:
