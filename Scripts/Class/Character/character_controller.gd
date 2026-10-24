@@ -13,7 +13,7 @@ signal click_power_updated(to : float)
 signal input_released(_position : Vector2)
 signal mouse_moved(_position : Vector2)
 signal clicked_at(_position : Vector2)
-signal ball_hit_pin(velocity : float)
+signal ball_hit_pin(velocity : float , pin:Pin)
 signal ball_hit_obstacle(velocity : float)
 signal player_timed_out
 
@@ -148,7 +148,7 @@ func _input(event: InputEvent) -> void:
 func _on_body_entered(body : Node3D) -> void:
 	if is_zero_approx(linear_velocity.length()) : return
 	if body is Pin:
-		ball_hit_pin.emit(linear_velocity.length())
+		ball_hit_pin.emit(linear_velocity.length(),body)
 		timing_out = true
 		can_drag = false
 		timeout_timer.start(timeout_length)
@@ -165,9 +165,13 @@ func _on_body_exited(body : Node3D) -> void:
 	pass
 
 
-func _on_ball_hit_pin(velocity: float) -> void:
+func _on_ball_hit_pin(velocity: float , pin:Pin) -> void:
 	$BallHit.restart()
 	$BallHit.emitting = true
-	if not has_hit_pin_sound:
+	if has_hit_pin_sound == false:
+		GFnc.apply_hitlag(0.15)
+		var dir:Vector3 = (global_position - pin.global_position).normalized()
+		var _velocity = dir * velocity * 0.1
+		pin.apply_impulse(_velocity,global_position)
 		crowd_yay_sound.play()
 		has_hit_pin_sound = true
