@@ -90,12 +90,14 @@ func _process(_delta: float) -> void:
 			rolling_sound.pitch_scale = remap(linear_velocity.length(),min_pitch_speed,max_pitch_speed,min_pitch,max_pitch)
 			if !rolling_sound.playing:
 				rolling_sound.play()
+				$BallTrail.emitting = true
 		else:
 			if rolling_sound.playing:
 				if !timing_out && !can_drag:
 					timing_out = true
 					timeout_timer.start(timeout_length)
 				rolling_sound.stop()
+				$BallTrail.emitting = false
 	return
 
 func _is_grounded() -> bool:
@@ -150,4 +152,9 @@ func _on_timer_timeout() -> void:
 	return
 
 func _on_body_exited(body : Node3D) -> void:
-	return
+	pass
+
+
+func _on_ball_hit_pin(velocity: float) -> void:
+	$BallHit.restart()
+	$BallHit.emitting = true
