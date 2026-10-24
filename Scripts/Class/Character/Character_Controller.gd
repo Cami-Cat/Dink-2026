@@ -5,6 +5,7 @@ const CHARACTER_GROUP_NAME : StringName = &"Character"
 signal player_died()
 signal click_power_updated(to : float)
 signal input_released(_position : Vector2)
+signal mouse_moved(_position : Vector2)
 signal clicked_at(_position : Vector2)
 
 var can_drag : bool = true
@@ -74,5 +75,6 @@ func _input(event: InputEvent) -> void:
 		if !dragging: return
 		var current_pos : Vector2 = event.position
 		var distance = click_position - current_pos
+		mouse_moved.emit(current_pos)
 		click_power = clampf((distance.length() / distance_for_max_power), 0.0, 1.0)
 		shoot_direction = Vector3(distance.normalized().x, 0.0, distance.normalized().y)

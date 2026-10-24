@@ -1,6 +1,6 @@
 class_name Pin extends RigidBody3D
 
-signal pin_knocked_over()
+signal pin_knocked_over
 
 @onready var explode_timer: Timer = $ExplodeTimer
 

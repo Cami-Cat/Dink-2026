@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dakaq42x0xfh1"]
+
+[ext_resource type="Script" uid="uid://2pcye1g8dj5g" path="res://Scripts/Class/Character/indicator.gd" id="1_cj8pr"]
+[ext_resource type="ArrayMesh" uid="uid://ba41rq0unw7e7" path="res://Assets/Meshes/Indicator/SM_Indicator_Head.res" id="1_jvirq"]
+[ext_resource type="ArrayMesh" uid="uid://cvreepxligx1b" path="res://Assets/Meshes/Indicator/SM_Indicator_Shaft.res" id="2_cj8pr"]
+
+[node name="Indicator" type="Node3D" unique_id=1637378779]
+script = ExtResource("1_cj8pr")
+
+[node name="IndicatorHead" type="MeshInstance3D" parent="." unique_id=1615227591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.013528049)
+mesh = ExtResource("1_jvirq")
+
+[node name="IndicatorBody" type="MeshInstance3D" parent="." unique_id=1510001766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
+mesh = ExtResource("2_cj8pr")

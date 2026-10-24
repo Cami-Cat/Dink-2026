@@ -70,7 +70,8 @@ func _spawn_pyramid() -> void:
 			var local_z = z_center_offset - ((current_row - 1) * row_depth_spacing)
 			
 			pin_instance.position = Vector3(local_x, 0.0, local_z)
-			pin_instance.pin_knocked_over.connect(_on_pin_knocked_over)
+			if !Engine.is_editor_hint():
+				pin_instance.pin_knocked_over.connect(_on_pin_knocked_over)
 			pins_spawned += 1
 			pin_instance.name = str(pins_spawned)
 		current_row += 1
