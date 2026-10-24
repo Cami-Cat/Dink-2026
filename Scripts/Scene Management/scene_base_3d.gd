@@ -14,6 +14,13 @@ func _ready() -> void:
 	super()
 	_teleport_player_to_spawn_point()
 	_connect_player()
+	_connect_pins()
+	return
+
+func _connect_pins() -> void:
+	var pin_master : PinMaster = get_tree().get_first_node_in_group(PinMaster.PIN_GROUP)
+	if !pin_master : return
+	pin_master.pin_knocked_over.connect(_on_pin_knocked_over)
 	return
 
 func _connect_player() -> void:
@@ -39,6 +46,12 @@ func _respawn_player() -> void:
 	player._reset()
 	camera._reset()
 	player.freeze = false
+
+func _on_pin_knocked_over(current_amount : int = 0) -> void:
+	if current_amount > 5:
+		print("Knocked over enough pins.")
+		return
+	return
 
 func _on_stage_complete() -> void:
 	GVar.total_scene_completions += 1
