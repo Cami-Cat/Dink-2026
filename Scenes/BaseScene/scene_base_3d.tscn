@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://8x0m53kjcw14" path="res://Scripts/Scene Management/scene_base_3d.gd" id="2_01f7x"]
 [ext_resource type="Script" uid="uid://5bngowlite7i" path="res://Scripts/Scene Management/world_origin.gd" id="2_ae3c4"]
+[ext_resource type="PackedScene" uid="uid://d2dah4epdqq50" path="res://Scenes/UI/menu.tscn" id="3_3xxyo"]
 [ext_resource type="Script" uid="uid://djivrtbh6jgne" path="res://Scripts/Class/Utility/auto_layer.gd" id="3_rlg4h"]
 [ext_resource type="Script" uid="uid://bone4bbujrn2j" path="res://Scripts/Viewports/Camera/main_camera.gd" id="3_sg2g5"]
 [ext_resource type="Script" uid="uid://dsi3mg5cqweqj" path="res://Scripts/Class/Level/Objects/pin_camera.gd" id="4_cfboo"]
@@ -23,13 +24,13 @@
 [ext_resource type="Script" uid="uid://sydlavbpat37" path="res://Scripts/Class/Level/Objects/player_trigger.gd" id="14_4qkh6"]
 [ext_resource type="AudioStream" uid="uid://bf6qtup1isud0" path="res://Assets/Audio/SFX/Crowd/CrowdAw.wav" id="15_4r2jv"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_dpqgl"]
-size = Vector3(76, 9.345, 1.595)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_3xxyo"]
 size = Vector3(76, 9.345, 1.595)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5svqw"]
+size = Vector3(76, 9.345, 1.595)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m675f"]
 size = Vector3(76, 9.345, 1.595)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_htquy"]
@@ -38,10 +39,10 @@ size = Vector3(14.101763, 0.6346741, 128.22809)
 [sub_resource type="BoxShape3D" id="BoxShape3D_uuwsw"]
 size = Vector3(0.52186966, 0.8204346, 114.52553)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_m675f"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_17yxc"]
 size = Vector3(10, 9.345, 1.595)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_17yxc"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_e2yef"]
 size = Vector3(1000, 1, 1000)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6opk0"]
@@ -68,6 +69,8 @@ _layer = 3
 script = ExtResource("3_rlg4h")
 _layer = 4
 
+[node name="Menu" parent="UpperSceneCanvas" unique_id=1258137577 instance=ExtResource("3_3xxyo")]
+
 [node name="World Origin" type="Node3D" parent="." unique_id=1793727043]
 script = ExtResource("2_ae3c4")
 
@@ -88,8 +91,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -87.216
 trigger_on_enter = [NodePath("../Pin Camera")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@21837" type="CollisionShape3D" parent="World Origin/Level/SideCamTriggerArea" unique_id=1614750402]
-shape = SubResource("BoxShape3D_dpqgl")
+[node name="@CollisionShape3D@95020" type="CollisionShape3D" parent="World Origin/Level/SideCamTriggerArea" unique_id=1145250849]
+shape = SubResource("BoxShape3D_3xxyo")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="Trigger Area2" parent="World Origin/Level" unique_id=1637487406 node_paths=PackedStringArray("trigger_on_enter") instance=ExtResource("7_ekuh2")]
@@ -97,8 +100,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -33.168
 trigger_on_enter = [NodePath("../Pusher")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@21839" type="CollisionShape3D" parent="World Origin/Level/Trigger Area2" unique_id=461565272]
-shape = SubResource("BoxShape3D_3xxyo")
+[node name="@CollisionShape3D@95022" type="CollisionShape3D" parent="World Origin/Level/Trigger Area2" unique_id=201721825]
+shape = SubResource("BoxShape3D_5svqw")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="Trigger Area3" parent="World Origin/Level" unique_id=491828337 node_paths=PackedStringArray("trigger_on_enter") instance=ExtResource("7_ekuh2")]
@@ -106,8 +109,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -60.044
 trigger_on_enter = [NodePath("../Pusher2")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@21841" type="CollisionShape3D" parent="World Origin/Level/Trigger Area3" unique_id=1085778434]
-shape = SubResource("BoxShape3D_5svqw")
+[node name="@CollisionShape3D@95024" type="CollisionShape3D" parent="World Origin/Level/Trigger Area3" unique_id=1650746694]
+shape = SubResource("BoxShape3D_m675f")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="Pusher" parent="World Origin/Level" unique_id=2033328119 instance=ExtResource("7_4l7u4")]
@@ -199,8 +202,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18233204, 2.5247445, -65.8
 trigger_on_enter = [NodePath("../CrowdOh")]
 area_size = Vector3(10, 9.345, 1.595)
 
-[node name="@CollisionShape3D@21843" type="CollisionShape3D" parent="World Origin/Level/CrowdExcitmentTrigger" unique_id=2049981542]
-shape = SubResource("BoxShape3D_m675f")
+[node name="@CollisionShape3D@95026" type="CollisionShape3D" parent="World Origin/Level/CrowdExcitmentTrigger" unique_id=1879077050]
+shape = SubResource("BoxShape3D_17yxc")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="CrowdOh" parent="World Origin/Level" unique_id=1755318309 instance=ExtResource("12_17h01")]
@@ -214,8 +217,8 @@ trigger_on_enter = [NodePath("../CrowdAw")]
 area_size = Vector3(1000, 1, 1000)
 metadata/_custom_type_script = "uid://sydlavbpat37"
 
-[node name="@CollisionShape3D@21845" type="CollisionShape3D" parent="World Origin/Level/CrowdSadTrigger" unique_id=1546731894]
-shape = SubResource("BoxShape3D_17yxc")
+[node name="@CollisionShape3D@95028" type="CollisionShape3D" parent="World Origin/Level/CrowdSadTrigger" unique_id=816347922]
+shape = SubResource("BoxShape3D_e2yef")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="CrowdAw" parent="World Origin/Level" unique_id=1276150280 instance=ExtResource("12_17h01")]
@@ -230,7 +233,7 @@ transform = Transform3D(1, 0, 0, 0, -0.5743929, 0.81857973, 0, -0.81857973, -0.5
 light_energy = 0.4
 
 [node name="Main Camera" type="Camera3D" parent="." unique_id=2061059013 node_paths=PackedStringArray("follow_target") groups=["MainCamera"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.606749, 4.9191556)
+transform = Transform3D(1, 0, 0, 0, 0.9869942, -0.16075604, 0, 0.16075604, 0.9869942, 0, 24.623695, -77.10297)
 current = true
 script = ExtResource("3_sg2g5")
 follow_target = NodePath("../Character Controller")

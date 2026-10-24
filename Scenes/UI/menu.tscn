@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://d2dah4epdqq50"]
+
+[ext_resource type="Script" uid="uid://dk14vvhiuwc7a" path="res://Scripts/UI/Menu/Main Menu/menu.gd" id="1_nhmg3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cjt8b"]
+bg_color = Color(0.06427085, 0.07692882, 0.1041789, 1)
+border_width_left = 90
+border_width_right = 90
+border_color = Color(0.0627451, 0.078431375, 0.105882354, 1)
+
+[sub_resource type="Theme" id="Theme_amx8r"]
+Button/font_sizes/font_size = 38
+Button/styles/disabled = null
+Button/styles/disabled_mirrored = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/hover_mirrored = null
+Button/styles/hover_pressed = null
+Button/styles/hover_pressed_mirrored = null
+Button/styles/normal = SubResource("StyleBoxFlat_cjt8b")
+Button/styles/normal_mirrored = null
+Button/styles/pressed = null
+Button/styles/pressed_mirrored = null
+
+[node name="Menu" type="Control" unique_id=1258137577]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nhmg3")
+
+[node name="Title" type="Control" parent="." unique_id=1063330183]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Title" unique_id=2046299525]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.0
+offset_top = 47.0
+offset_right = 141.0
+offset_bottom = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "BOWLING SUPER LUCKY STRIKE 5000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="Control" parent="." unique_id=2006205828]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons" unique_id=2018249054]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -33.0
+offset_right = 21.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 19
+alignment = 1
+
+[node name="Play" type="Button" parent="Buttons/VBoxContainer" unique_id=406285841]
+layout_mode = 2
+theme = SubResource("Theme_amx8r")
+text = "Play"
+
+[node name="Quit" type="Button" parent="Buttons/VBoxContainer" unique_id=806765100]
+layout_mode = 2
+theme = SubResource("Theme_amx8r")
+text = "Quit"
