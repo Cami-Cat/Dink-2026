@@ -86,7 +86,7 @@ func _process(_delta: float) -> void:
 	if position.y < -20:
 		player_died.emit()
 	if !freeze:
-		if _is_grounded() and linear_velocity.length() > 1.0:
+		if _is_grounded() and linear_velocity.length() > 0.6:
 			rolling_sound.pitch_scale = remap(linear_velocity.length(),min_pitch_speed,max_pitch_speed,min_pitch,max_pitch)
 			if !rolling_sound.playing:
 				rolling_sound.play()
@@ -101,7 +101,7 @@ func _process(_delta: float) -> void:
 func _is_grounded() -> bool:
 	var space_state = get_world_3d().direct_space_state
 	var start = global_position
-	var end = start + Vector3.DOWN * 0.6
+	var end = start + Vector3.DOWN * 1
 	var query = PhysicsRayQueryParameters3D.create(start,end)
 	query.exclude = [self]
 	is_grounded = !space_state.intersect_ray(query).is_empty()
