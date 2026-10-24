@@ -1,5 +1,9 @@
 class_name CharacterController extends RigidBody3D
 
+@onready var rolling_sound: AudioStreamPlayer3D = $RollingSound
+@onready var ball_hit_floor_sound: AudioStreamPlayer3D = $BallHitFloorSound
+@onready var ball_grab_sound: AudioStreamPlayer = $BallGrabSound
+
 const CHARACTER_GROUP_NAME : StringName = &"Character"
 
 signal player_died()
@@ -14,6 +18,11 @@ signal ball_hit_obstacle(velocity : float)
 var can_drag : bool = true
 var dragging : bool = false
 var click_position : Vector2
+var is_grounded: bool = false:
+	set(a):
+		if a != is_grounded:
+			is_grounded = a
+			_handle_grounded_state_changed()
 @export_category("Power")
 @export_group("Click Power")
 @export var click_power : float = 0.0 : 
@@ -27,6 +36,11 @@ var click_position : Vector2
 @export_group("Shoot Power")
 @export var shoot_power : float = 300.0
 
+@export_group("Roll Sound")
+@export var max_pitch:float = 1.1
+@export var min_pitch:float = 0.9
+@export var min_pitch_speed:float = 0.0
+@export var max_pitch_speed:float = 60.0
 var shoot_direction : Vector3
 
 func _reset() -> void:
@@ -58,15 +72,38 @@ func shoot_player(_position : Vector2) -> void:
 	apply_impulse(shoot_direction * (shoot_power * click_power), position)
 	return
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if position.y < -20:
 		player_died.emit()
-		return
+	if !freeze:
+		if _is_grounded() and linear_velocity.length() > 1.0:
+			rolling_sound.pitch_scale = remap(linear_velocity.length(),min_pitch_speed,max_pitch_speed,min_pitch,max_pitch)
+			if !rolling_sound.playing:
+				rolling_sound.play()
+		else:
+			if rolling_sound.playing:
+				rolling_sound.stop()
+	return
 
+func _is_grounded() -> bool:
+	var space_state = get_world_3d().direct_space_state
+	var start = global_position
+	var end = start + Vector3.DOWN * 0.6
+	var query = PhysicsRayQueryParameters3D.create(start,end)
+	query.exclude = [self]
+	is_grounded = !space_state.intersect_ray(query).is_empty()
+	return is_grounded
+
+func _handle_grounded_state_changed():
+	if is_grounded:
+		ball_hit_floor_sound.pitch_scale = randf_range(0.95,1.05)
+		ball_hit_floor_sound.volume_db = remap(linear_velocity.length(),0,30,-3,3)
+		ball_hit_floor_sound.play()
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Click"):
 		if !can_drag : return
 		if dragging : return
+		ball_grab_sound.play()
 		dragging = true
 		click_position = get_viewport().get_mouse_position()
 		clicked_at.emit(click_position)
@@ -81,7 +118,7 @@ func _input(event: InputEvent) -> void:
 		var current_pos : Vector2 = event.position
 		var distance = click_position - current_pos
 		mouse_moved.emit(current_pos)
-		click_power = clampf((distance.length() / distance_for_max_power), 0.0, 1.0)
+		click_power = clampf((distance.length() / distance_for_max_power), min_click_power, max_click_power)
 		shoot_direction = Vector3(distance.normalized().x, 0.0, distance.normalized().y)
 
 func _on_body_entered(body : Node3D) -> void:
