@@ -1,6 +1,7 @@
 class_name PinTracker
 extends Control
 
+
 @onready var pin_master:PinMaster = get_tree().get_first_node_in_group(PinMaster.PIN_GROUP)
 @onready var scene:SceneBase3D = get_tree().get_first_node_in_group(SceneBase3D.SCENE_GROUP)
 
@@ -21,14 +22,14 @@ func _handle_scene_completed(_number_compelted_stages:int):
 	_update_label()
 	
 func _handle_pins_required_changed(new_required:int):
+	await scene.player_reset
 	required = new_required
-	_update_label()
-	pass
 	
 func _handle_pins_knocked_changed(new_total:int):
+	if new_total < knocked:
+		await scene.player_reset
 	knocked = new_total
 	_update_label()
-	pass
 
 func _update_label():
 	rich_text_label.text = "%s of %s" % [knocked,required]

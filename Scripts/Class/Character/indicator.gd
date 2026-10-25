@@ -3,7 +3,7 @@ class_name Indicator extends Node3D
 @onready var indicator_head: MeshInstance3D = $IndicatorHead
 @onready var indicator_body: MeshInstance3D = $IndicatorHead/IndicatorBody
 @onready var player : CharacterController = get_tree().get_first_node_in_group(CharacterController.CHARACTER_GROUP_NAME)
-
+@onready var main_camera:CameraHolder = get_tree().get_first_node_in_group(CameraHolder.CAMERA_HOLDER_GROUP)
 var M_INDICATOR:StandardMaterial3D = preload("res://Assets/Meshes/Indicator/M_Indicator.tres")
 var last_click_power:float = 1.0
 
@@ -37,6 +37,7 @@ func _spawn_indicator(at_location : Vector3) -> void:
 
 func _on_player_click(click_position : Vector2, _character_position : Vector3 = player.global_position) -> void:
 	first_click_position = click_position
+	rotation.y = main_camera.rotation.y
 	#_spawn_indicator(_character_position)
 	show()
 	return
@@ -61,9 +62,13 @@ func _on_player_click_power_updated(click_power : float) -> void:
 	return
 
 func _on_player_mouse_moved(new_click_position : Vector2) -> void:
-	var direction = (first_click_position - new_click_position).normalized()
-	var direction_as_v3 : Vector3 = Vector3(direction.x, 0.0, direction.y)
-	look_at(direction_as_v3 * 500.0)
+	var drag_direction:Vector2 = (first_click_position - new_click_position).normalized()
+	drag_direction.y = -drag_direction.y
+	var cam_forward:Vector3 = (-main_camera.global_basis.z).slide(Vector3.UP).normalized()
+	var cam_right:Vector3 = (main_camera.global_basis.x).slide(Vector3.UP).normalized()
+	var look_direction:Vector3 = (cam_right * drag_direction.x + cam_forward * drag_direction.y).normalized()
+
+	look_at(global_position + look_direction * 100)
 	return
 
 func _on_player_released(release_position : Vector2) -> void:

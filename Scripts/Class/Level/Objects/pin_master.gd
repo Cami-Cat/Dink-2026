@@ -23,6 +23,9 @@ func _init() -> void:
 func _reset() -> void:
 	if resetting : return
 	resetting = true
+	if !Engine.is_editor_hint():
+		total_pins = GVar.stage_pins[GVar.total_scene_completions]
+		pin_spacing = remap(GVar.total_scene_completions,0,GVar.stage_pins.size(),1.575,1.05)
 	pins_knocked_over = 0
 	_clear_children()
 	if !is_node_ready(): await ready
@@ -33,7 +36,6 @@ func _reset() -> void:
 func _ready() -> void:
 	if !PIN_SCENE:
 		return
-	_reset()
 	return
 
 func _clear_children() -> void:
@@ -89,10 +91,11 @@ func get_center_of_nodes() -> Vector3:
 		return Vector3.ZERO
 	var weighted_position_sum: Vector3 = Vector3.ZERO
 	var total_weight: float = 0.0
-	for pin in get_children():
+	for pin in get_children():#
+		pin = pin as Pin
 		if is_instance_valid(pin) and pin.is_inside_tree():
-			var weight: float = global_position.distance_to(pin.global_position)
-			if global_position.distance_to(pin.global_position) > 500:
+			var weight: float = clamp(pin.linear_velocity.length(),0,5)
+			if global_position.distance_to(pin.global_position) > 200:
 				weight = 0.0
 			weighted_position_sum += pin.global_position * weight
 			total_weight += weight

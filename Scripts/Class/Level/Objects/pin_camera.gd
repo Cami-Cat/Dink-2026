@@ -19,4 +19,3 @@ func _process(delta: float) -> void:
 	var furthest_pin_distance :float = pin_master.get_furthest_child_distance()
 	furthest_pin_distance = clamp(remap(furthest_pin_distance,100,200,40,60),40,60)
 	fov = move_toward(fov,furthest_pin_distance,delta * 10)
-	print("Fov = %s" % fov)
