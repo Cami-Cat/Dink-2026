@@ -5,6 +5,7 @@ class_name CharacterController extends RigidBody3D
 @onready var ball_hit_floor_sound: AudioStreamPlayer3D = $BallHitFloorSound
 @onready var ball_grab_sound: AudioStreamPlayer = $BallGrabSound
 @onready var main_camera:CameraHolder = get_tree().get_first_node_in_group(CameraHolder.CAMERA_HOLDER_GROUP)
+@onready var sfx_whack: AudioStreamPlayer = $SfxWhack
 
 const CHARACTER_GROUP_NAME : StringName = &"Character"
 
@@ -134,6 +135,7 @@ func _input(event: InputEvent) -> void:
 		#can_drag = false
 		input_released.emit(get_viewport().get_mouse_position())
 		$ImpactHit.emitting = true
+		sfx_whack.play()
 	if event is InputEventMouseMotion:
 		if !dragging: return
 		var cam_forward:Vector3 = (-main_camera.global_basis.z).slide(Vector3.UP).normalized()
