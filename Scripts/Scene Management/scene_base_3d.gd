@@ -2,12 +2,14 @@ class_name SceneBase3D
 extends SceneBase
 
 @onready var menu : Menu = $UpperSceneCanvas/Menu
+@onready var crowd_cheer_stage_clear: AudioStreamPlayer = $CrowdCheerStageClear
 
 const SCENE_GROUP : StringName = &"Scene"
 
 signal scene_completed(new_stage : int)
 signal knocked_over_pins_increased(new_count : int)
 signal player_reset()
+signal play_pressed()
 
 var stage_num : int = 0
 var required_pins : int = 0:
@@ -19,7 +21,7 @@ var time_before_reset : float = 2.0
 var ball_launches : int = 0
 var stage_completed : bool = false
 var camera_pause_position : Transform3D
-
+var respawning:bool = false
 signal required_pins_changed(new_amount : int)
 
 func _init() -> void:
@@ -67,11 +69,15 @@ func _teleport_player_to_spawn_point() -> void:
 
 func _respawn_player() -> void:
 	if stage_completed : return
+	if respawning : return
+	respawning = true
+	await get_tree().create_timer(3.0).timeout
 	var player : CharacterController = get_tree().get_first_node_in_group(CharacterController.CHARACTER_GROUP_NAME)
 	var camera : CameraHolder = get_tree().get_first_node_in_group(CameraHolder.CAMERA_HOLDER_GROUP)
 	_teleport_player_to_spawn_point()
 	player._reset()
 	camera._reset()
+	respawning = false
 
 func _on_pin_knocked_over(current_amount : int = 0) -> void:
 	if current_amount >= required_pins:
@@ -86,6 +92,7 @@ func _on_stage_complete() -> void:
 	stage_num = GVar.total_scene_completions
 	required_pins = round(GVar.stage_pins[GVar.total_scene_completions] * 0.8)
 	required_pins_changed.emit(required_pins)
+	crowd_cheer_stage_clear.play()
 	_reset()
 	return
 
@@ -122,8 +129,12 @@ func _on_play_pressed() -> void:
 	camera.following = true
 	menu.hide()
 	GVar.is_menu_open = false
+	play_pressed.emit()
 	return
 
 func _on_quit_pressed() -> void:
 	get_tree().quit(0)
 	return
+
+func on_trigger(trigger_event:PlayerTrigger.TRIGGER_STATE):
+	pass

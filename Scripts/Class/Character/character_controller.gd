@@ -87,8 +87,6 @@ func shoot_player(_position : Vector2) -> void:
 	return
 
 func _process(_delta: float) -> void:
-	if position.y < -20:
-		player_died.emit()
 	if !freeze:
 		if _is_grounded() and linear_velocity.length() > 0.6:
 			rolling_sound.pitch_scale = remap(linear_velocity.length(),min_pitch_speed,max_pitch_speed,min_pitch,max_pitch)
@@ -180,3 +178,7 @@ func _on_ball_hit_pin(speed: float , pin:Pin) -> void:
 		pin.apply_impulse(_velocity,global_position)
 		crowd_yay_sound.play()
 		has_hit_pin_sound = true
+
+func on_trigger(trigger_event:PlayerTrigger.TRIGGER_STATE):
+	player_died.emit()
+	pass

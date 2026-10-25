@@ -14,6 +14,8 @@ func _ready() -> void:
 	pin_master.pin_knocked_over.connect(_handle_pins_knocked_changed)
 	scene.required_pins_changed.connect(_handle_pins_required_changed)
 	scene.scene_completed.connect(_handle_scene_completed)
+	scene.play_pressed.connect(_handle_play_pressed)
+	hide()
 	required = scene.required_pins
 	_update_label()
 
@@ -24,7 +26,6 @@ func _handle_scene_completed(_number_compelted_stages:int):
 func _handle_pins_required_changed(new_required:int):
 	await scene.player_reset
 	required = new_required
-	$PinTick/CrowdCheerStageClear.play()
 	
 func _handle_pins_knocked_changed(new_total:int):
 	if new_total < knocked:
@@ -32,6 +33,9 @@ func _handle_pins_knocked_changed(new_total:int):
 	knocked = new_total
 	_update_label()
 	$PinTick.play()
+
+func _handle_play_pressed():
+	show()
 
 func _update_label():
 	rich_text_label.text = "%s of %s" % [knocked,required]

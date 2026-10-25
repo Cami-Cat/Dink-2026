@@ -1,32 +1,21 @@
 [gd_scene format=3 uid="uid://d2dah4epdqq50"]
 
 [ext_resource type="Script" uid="uid://dk14vvhiuwc7a" path="res://Scripts/UI/Menu/Main Menu/menu.gd" id="1_nhmg3"]
+[ext_resource type="Theme" uid="uid://d2g7lhon7onud" path="res://Assets/Themes/Default.tres" id="2_uk6bn"]
+[ext_resource type="Shader" uid="uid://buxs8ygqjiy4c" path="res://Scripts/Resources/Materials/Master Materials/tilt.gdshader" id="3_wuk0b"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cjt8b"]
-bg_color = Color(0.06427085, 0.07692882, 0.1041789, 1)
-border_width_left = 90
-border_width_right = 90
-border_color = Color(0.0627451, 0.078431375, 0.105882354, 1)
-
-[sub_resource type="Theme" id="Theme_amx8r"]
-Button/font_sizes/font_size = 38
-Button/styles/disabled = null
-Button/styles/disabled_mirrored = null
-Button/styles/focus = null
-Button/styles/hover = null
-Button/styles/hover_mirrored = null
-Button/styles/hover_pressed = null
-Button/styles/hover_pressed_mirrored = null
-Button/styles/normal = SubResource("StyleBoxFlat_cjt8b")
-Button/styles/normal_mirrored = null
-Button/styles/pressed = null
-Button/styles/pressed_mirrored = null
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uuwsw"]
+shader = ExtResource("3_wuk0b")
+shader_parameter/tilt = 0.3200000152
 
 [node name="Menu" type="Control" unique_id=1258137577]
+custom_minimum_size = Vector2(800, 700)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nhmg3")
@@ -54,6 +43,7 @@ offset_right = 141.0
 offset_bottom = 107.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_uk6bn")
 theme_override_font_sizes/font_size = 36
 text = "BOWLING SUPER LUCKY STRIKE 5000"
 horizontal_alignment = 1
@@ -80,21 +70,37 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -21.0
-offset_top = -33.0
-offset_right = 21.0
-offset_bottom = 33.0
+offset_left = -28.0
+offset_top = -49.5
+offset_right = 28.0
+offset_bottom = 144.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 19
 alignment = 1
 
 [node name="Play" type="Button" parent="Buttons/VBoxContainer" unique_id=406285841]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
-theme = SubResource("Theme_amx8r")
+size_flags_vertical = 0
+theme = ExtResource("2_uk6bn")
 text = "Play"
 
-[node name="Quit" type="Button" parent="Buttons/VBoxContainer" unique_id=806765100]
+[node name="Space" type="Control" parent="Buttons/VBoxContainer" unique_id=588244917]
 layout_mode = 2
-theme = SubResource("Theme_amx8r")
+
+[node name="Quit" type="Button" parent="Buttons/VBoxContainer" unique_id=806765100]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme = ExtResource("2_uk6bn")
 text = "Quit"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1590079524]
+material = SubResource("ShaderMaterial_uuwsw")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

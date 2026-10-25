@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bvqnqwmn24nss"]
+
+[ext_resource type="Shader" uid="uid://j4o4twi00q4q" path="res://Scripts/Resources/Materials/Master Materials/Shaders/holographic.gdshader" id="1_q6633"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_q6633")
+shader_parameter/fresnel_power = 5.0
+shader_parameter/edge_strength = 4.0
+shader_parameter/hue_speed = 0.15

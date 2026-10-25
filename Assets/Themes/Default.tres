@@ -1,0 +1,12 @@
+[gd_resource type="Theme" format=3 uid="uid://d2g7lhon7onud"]
+
+[ext_resource type="FontFile" uid="uid://b7ul0wble7grr" path="res://Assets/Fonts/varsity_regular.ttf" id="1_qjduq"]
+[ext_resource type="StyleBox" uid="uid://3na6sgghdcma" path="res://Assets/Themes/style_box_textured_hovered.tres" id="2_ongpu"]
+[ext_resource type="StyleBox" uid="uid://w55skukmxr1f" path="res://Assets/Themes/style_box_textured_normal.tres" id="3_mkp3d"]
+
+[resource]
+Button/fonts/font = ExtResource("1_qjduq")
+Button/styles/hover = ExtResource("2_ongpu")
+Button/styles/normal = ExtResource("3_mkp3d")
+Label/fonts/font = ExtResource("1_qjduq")
+RichTextLabel/fonts/normal_font = ExtResource("1_qjduq")

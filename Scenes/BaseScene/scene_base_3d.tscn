@@ -24,14 +24,18 @@
 [ext_resource type="Script" uid="uid://sydlavbpat37" path="res://Scripts/Class/Level/Objects/player_trigger.gd" id="14_4qkh6"]
 [ext_resource type="AudioStream" uid="uid://bf6qtup1isud0" path="res://Assets/Audio/SFX/Crowd/CrowdAw.wav" id="15_4r2jv"]
 [ext_resource type="Script" uid="uid://d3s6dtcvemo62" path="res://Scenes/BaseScene/camera_holder.gd" id="20_5svqw"]
+[ext_resource type="AudioStream" uid="uid://dfc302bs57jqm" path="res://Assets/Audio/SFX/Wii Sports - Nice Shot - QuickSounds.com.mp3" id="25_htquy"]
+[ext_resource type="PackedScene" uid="uid://448c7svgmuqr" path="res://Scenes/Level/Objects/platform.tscn" id="26_17yxc"]
+[ext_resource type="PackedScene" uid="uid://doiuexinwftmg" path="res://Scenes/Level/Objects/barrier.tscn" id="26_m675f"]
+[ext_resource type="PackedScene" uid="uid://c8nd7k5ttugqr" path="res://Scenes/Level/floating_pin.tscn" id="28_e2yef"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5svqw"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_e2yef"]
 size = Vector3(76, 9.345, 1.595)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_m675f"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7u8y2"]
 size = Vector3(76, 9.345, 1.595)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_17yxc"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_db7i8"]
 size = Vector3(76, 9.345, 1.595)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_htquy"]
@@ -40,11 +44,23 @@ size = Vector3(14.101763, 0.76838684, 128.22809)
 [sub_resource type="BoxShape3D" id="BoxShape3D_uuwsw"]
 size = Vector3(0.52186966, 0.8204346, 114.52553)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_e2yef"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_y52jt"]
 size = Vector3(10, 9.345, 1.595)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7u8y2"]
-size = Vector3(1000, 1, 1000)
+[sub_resource type="BoxShape3D" id="BoxShape3D_wmubx"]
+size = Vector3(500, 1, 500)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_76s2b"]
+size = Vector3(500, 100, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pywqh"]
+size = Vector3(500, 100, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3abxi"]
+size = Vector3(500, 100, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_44pwp"]
+size = Vector3(500, 100, 1)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6opk0"]
 panorama = ExtResource("10_b2ccu")
@@ -93,17 +109,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -87.216
 trigger_on_enter = [NodePath("../Pin Camera")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@22075" type="CollisionShape3D" parent="World Origin/Level/SideCamTriggerArea" unique_id=980301509]
-shape = SubResource("BoxShape3D_5svqw")
+[node name="@CollisionShape3D@91126" type="CollisionShape3D" parent="World Origin/Level/SideCamTriggerArea" unique_id=1528863367]
+shape = SubResource("BoxShape3D_e2yef")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="Trigger Area2" parent="World Origin/Level" unique_id=1637487406 node_paths=PackedStringArray("trigger_on_enter") instance=ExtResource("7_ekuh2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -33.168198)
-trigger_on_enter = [NodePath("../Pusher")]
+trigger_on_enter = [NodePath("../Pusher"), NodePath("../../../Platform/Barrier")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@22077" type="CollisionShape3D" parent="World Origin/Level/Trigger Area2" unique_id=1722429141]
-shape = SubResource("BoxShape3D_m675f")
+[node name="@CollisionShape3D@91128" type="CollisionShape3D" parent="World Origin/Level/Trigger Area2" unique_id=459804902]
+shape = SubResource("BoxShape3D_7u8y2")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="Trigger Area3" parent="World Origin/Level" unique_id=491828337 node_paths=PackedStringArray("trigger_on_enter") instance=ExtResource("7_ekuh2")]
@@ -111,8 +127,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -60.044
 trigger_on_enter = [NodePath("../Pusher2")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@22079" type="CollisionShape3D" parent="World Origin/Level/Trigger Area3" unique_id=300219658]
-shape = SubResource("BoxShape3D_17yxc")
+[node name="@CollisionShape3D@91130" type="CollisionShape3D" parent="World Origin/Level/Trigger Area3" unique_id=538941313]
+shape = SubResource("BoxShape3D_db7i8")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="Pusher" parent="World Origin/Level" unique_id=2033328119 instance=ExtResource("7_4l7u4")]
@@ -204,28 +220,74 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18233204, 2.5247445, -65.8
 trigger_on_enter = [NodePath("../CrowdOh")]
 area_size = Vector3(10, 9.345, 1.595)
 
-[node name="@CollisionShape3D@22081" type="CollisionShape3D" parent="World Origin/Level/CrowdExcitmentTrigger" unique_id=1471031141]
-shape = SubResource("BoxShape3D_e2yef")
+[node name="@CollisionShape3D@91132" type="CollisionShape3D" parent="World Origin/Level/CrowdExcitmentTrigger" unique_id=662254747]
+shape = SubResource("BoxShape3D_y52jt")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="CrowdOh" parent="World Origin/Level" unique_id=1755318309 instance=ExtResource("12_17h01")]
 stream = ExtResource("13_4qkh6")
 bus = &"SFX"
 
-[node name="CrowdSadTrigger" type="Area3D" parent="World Origin/Level" unique_id=748999289 node_paths=PackedStringArray("trigger_on_enter")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.6255007, 0)
-script = ExtResource("14_4qkh6")
-trigger_on_enter = [NodePath("../CrowdAw")]
-area_size = Vector3(1000, 1, 1000)
-metadata/_custom_type_script = "uid://sydlavbpat37"
-
-[node name="@CollisionShape3D@22083" type="CollisionShape3D" parent="World Origin/Level/CrowdSadTrigger" unique_id=557111092]
-shape = SubResource("BoxShape3D_7u8y2")
-debug_color = Color(0.875, 0, 0.236, 1)
-
 [node name="CrowdAw" parent="World Origin/Level" unique_id=1276150280 instance=ExtResource("12_17h01")]
 stream = ExtResource("15_4r2jv")
 bus = &"SFX"
+
+[node name="CrowdSadTriggers" type="Node3D" parent="World Origin/Level" unique_id=18236263]
+
+[node name="CrowdSadTrigger" type="Area3D" parent="World Origin/Level/CrowdSadTriggers" unique_id=748999289 node_paths=PackedStringArray("trigger_on_enter")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.6255007, 0)
+script = ExtResource("14_4qkh6")
+trigger_on_enter = [NodePath("../../CrowdAw"), NodePath("../../../../Character Controller")]
+area_size = Vector3(500, 1, 500)
+metadata/_custom_type_script = "uid://sydlavbpat37"
+
+[node name="@CollisionShape3D@91134" type="CollisionShape3D" parent="World Origin/Level/CrowdSadTriggers/CrowdSadTrigger" unique_id=1827412864]
+shape = SubResource("BoxShape3D_wmubx")
+debug_color = Color(0.875, 0, 0.236, 1)
+
+[node name="CrowdSadTrigger2" type="Area3D" parent="World Origin/Level/CrowdSadTriggers" unique_id=915021751 node_paths=PackedStringArray("trigger_on_enter")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7353878, -98.746544)
+script = ExtResource("14_4qkh6")
+trigger_on_enter = [NodePath("../../CrowdAw"), NodePath("../../../../Character Controller")]
+area_size = Vector3(500, 100, 1)
+metadata/_custom_type_script = "uid://sydlavbpat37"
+
+[node name="@CollisionShape3D@91136" type="CollisionShape3D" parent="World Origin/Level/CrowdSadTriggers/CrowdSadTrigger2" unique_id=1035247480]
+shape = SubResource("BoxShape3D_76s2b")
+debug_color = Color(0.875, 0, 0.236, 1)
+
+[node name="CrowdSadTrigger3" type="Area3D" parent="World Origin/Level/CrowdSadTriggers" unique_id=380227913 node_paths=PackedStringArray("trigger_on_enter")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -19.867418, -0.7353878, -98.746544)
+script = ExtResource("14_4qkh6")
+trigger_on_enter = [NodePath("../../CrowdAw"), NodePath("../../../../Character Controller")]
+area_size = Vector3(500, 100, 1)
+metadata/_custom_type_script = "uid://sydlavbpat37"
+
+[node name="@CollisionShape3D@91138" type="CollisionShape3D" parent="World Origin/Level/CrowdSadTriggers/CrowdSadTrigger3" unique_id=1904585417]
+shape = SubResource("BoxShape3D_pywqh")
+debug_color = Color(0.875, 0, 0.236, 1)
+
+[node name="CrowdSadTrigger4" type="Area3D" parent="World Origin/Level/CrowdSadTriggers" unique_id=1221295009 node_paths=PackedStringArray("trigger_on_enter")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 21.28438, -0.7353878, -98.746544)
+script = ExtResource("14_4qkh6")
+trigger_on_enter = [NodePath("../../CrowdAw"), NodePath("../../../../Character Controller")]
+area_size = Vector3(500, 100, 1)
+metadata/_custom_type_script = "uid://sydlavbpat37"
+
+[node name="@CollisionShape3D@91140" type="CollisionShape3D" parent="World Origin/Level/CrowdSadTriggers/CrowdSadTrigger4" unique_id=284254792]
+shape = SubResource("BoxShape3D_3abxi")
+debug_color = Color(0.875, 0, 0.236, 1)
+
+[node name="CrowdSadTrigger5" type="Area3D" parent="World Origin/Level/CrowdSadTriggers" unique_id=1013830359 node_paths=PackedStringArray("trigger_on_enter")]
+transform = Transform3D(1.7763568e-15, 1, -5.9604645e-08, 4.371139e-08, -5.9604645e-08, -1, -1, 0, -4.371139e-08, -2.8401947, 45.664894, -98.746544)
+script = ExtResource("14_4qkh6")
+trigger_on_enter = [NodePath("../../CrowdAw"), NodePath("../../../../Character Controller")]
+area_size = Vector3(500, 100, 1)
+metadata/_custom_type_script = "uid://sydlavbpat37"
+
+[node name="@CollisionShape3D@91142" type="CollisionShape3D" parent="World Origin/Level/CrowdSadTriggers/CrowdSadTrigger5" unique_id=83043190]
+shape = SubResource("BoxShape3D_44pwp")
+debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World Origin" unique_id=333920919]
 environment = SubResource("Environment_d2fsr")
@@ -233,6 +295,116 @@ environment = SubResource("Environment_d2fsr")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="World Origin" unique_id=1639979146]
 transform = Transform3D(1, 0, 0, 0, -0.5743929, 0.81857973, 0, -0.81857973, -0.5743929, 0, 0, 0)
 light_energy = 0.4
+
+[node name="FloatingPins" type="Node3D" parent="World Origin" unique_id=1697710722]
+
+[node name="FloatingPin" parent="World Origin/FloatingPins" unique_id=1132266683 instance=ExtResource("28_e2yef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.326996, 28.71307, -157.99455)
+
+[node name="FloatingPin2" parent="World Origin/FloatingPins" unique_id=1564245795 instance=ExtResource("28_e2yef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.14984, -8.629971, -261.6417)
+
+[node name="FloatingPin3" parent="World Origin/FloatingPins" unique_id=2090317159 instance=ExtResource("28_e2yef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.523758, 90.36903, -261.6417)
+
+[node name="FloatingPin4" parent="World Origin/FloatingPins" unique_id=885980794 instance=ExtResource("28_e2yef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.65399, 57.42614, -315.9891)
+
+[node name="FloatingPin5" parent="World Origin/FloatingPins" unique_id=135260253 instance=ExtResource("28_e2yef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.85075, 119.08211, -419.63623)
+
+[node name="FloatingPin6" parent="World Origin/FloatingPins" unique_id=1218089856 instance=ExtResource("28_e2yef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184.13269, 20.0831, -419.63623)
+
+[node name="FloatingPin7" parent="World Origin/FloatingPins" unique_id=1430084921 instance=ExtResource("28_e2yef")]
+transform = Transform3D(-0.9636193, 0, -0.26727864, 0, 1, 0, 0.26727864, 0, -0.9636193, -73.727486, 28.71307, -42.39736)
+
+[node name="FloatingPin8" parent="World Origin/FloatingPins" unique_id=1481500903 instance=ExtResource("28_e2yef")]
+transform = Transform3D(-0.9636193, 0, -0.26727864, 0, 1, 0, 0.26727864, 0, -0.9636193, 131.74063, -8.629971, 8.17231)
+
+[node name="FloatingPin9" parent="World Origin/FloatingPins" unique_id=735396166 instance=ExtResource("28_e2yef")]
+transform = Transform3D(-0.9636193, 0, -0.26727864, 0, 1, 0, 0.26727864, 0, -0.9636193, -12.487747, 90.36903, 48.17686)
+
+[node name="FloatingPin10" parent="World Origin/FloatingPins" unique_id=486814219 instance=ExtResource("28_e2yef")]
+transform = Transform3D(-0.9636193, 0, -0.26727864, 0, 1, 0, 0.26727864, 0, -0.9636193, -110.830795, 57.42614, 131.85349)
+
+[node name="FloatingPin11" parent="World Origin/FloatingPins" unique_id=61807426 instance=ExtResource("28_e2yef")]
+transform = Transform3D(-0.9636193, 0, -0.26727864, 0, 1, 0, 0.26727864, 0, -0.9636193, -49.591064, 119.08211, 222.4277)
+
+[node name="FloatingPin12" parent="World Origin/FloatingPins" unique_id=1566437602 instance=ExtResource("28_e2yef")]
+transform = Transform3D(-0.9636193, 0, -0.26727864, 0, 1, 0, 0.26727864, 0, -0.9636193, 252.96945, 20.0831, 138.50662)
+
+[node name="FloatingPin13" parent="World Origin/FloatingPins" unique_id=1292325301 instance=ExtResource("28_e2yef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -202.36807, 28.71307, -157.99455)
+
+[node name="FloatingPin14" parent="World Origin/FloatingPins" unique_id=174484860 instance=ExtResource("28_e2yef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -386.8449, -8.629971, -261.6417)
+
+[node name="FloatingPin15" parent="World Origin/FloatingPins" unique_id=1000408979 instance=ExtResource("28_e2yef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -237.17131, 90.36903, -261.6417)
+
+[node name="FloatingPin16" parent="World Origin/FloatingPins" unique_id=1444985416 instance=ExtResource("28_e2yef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.04108, 57.42614, -315.9891)
+
+[node name="FloatingPin17" parent="World Origin/FloatingPins" unique_id=1150961284 instance=ExtResource("28_e2yef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154.84431, 119.08211, -419.63623)
+
+[node name="FloatingPin18" parent="World Origin/FloatingPins" unique_id=2062842948 instance=ExtResource("28_e2yef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -468.82776, 20.0831, -419.63623)
+
+[node name="FloatingPin19" parent="World Origin/FloatingPins" unique_id=993734250 instance=ExtResource("28_e2yef")]
+transform = Transform3D(-0.9636193, 0, -0.26727864, 0, 1, 0, 0.26727864, 0, -0.9636193, -358.42255, 28.71307, -42.39736)
+
+[node name="FloatingPin20" parent="World Origin/FloatingPins" unique_id=1554383341 instance=ExtResource("28_e2yef")]
+transform = Transform3D(-0.9636193, 0, -0.26727864, 0, 1, 0, 0.26727864, 0, -0.9636193, -152.95444, -8.629971, 8.17231)
+
+[node name="FloatingPin21" parent="World Origin/FloatingPins" unique_id=1731516891 instance=ExtResource("28_e2yef")]
+transform = Transform3D(-0.9636193, 0, -0.26727864, 0, 1, 0, 0.26727864, 0, -0.9636193, -297.1828, 90.36903, 48.17686)
+
+[node name="FloatingPin22" parent="World Origin/FloatingPins" unique_id=548137122 instance=ExtResource("28_e2yef")]
+transform = Transform3D(-0.9636193, 0, -0.26727864, 0, 1, 0, 0.26727864, 0, -0.9636193, -395.52588, 57.42614, 131.85349)
+
+[node name="FloatingPin23" parent="World Origin/FloatingPins" unique_id=298221459 instance=ExtResource("28_e2yef")]
+transform = Transform3D(-0.9636193, 0, -0.26727864, 0, 1, 0, 0.26727864, 0, -0.9636193, -334.28613, 119.08211, 222.4277)
+
+[node name="FloatingPin24" parent="World Origin/FloatingPins" unique_id=585127554 instance=ExtResource("28_e2yef")]
+transform = Transform3D(-0.9636193, 0, -0.26727864, 0, 1, 0, 0.26727864, 0, -0.9636193, -31.725616, 20.0831, 138.50662)
+
+[node name="FloatingPin25" parent="World Origin/FloatingPins" unique_id=343813420 instance=ExtResource("28_e2yef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 413.40063, 28.71307, -157.99455)
+
+[node name="FloatingPin26" parent="World Origin/FloatingPins" unique_id=1852668445 instance=ExtResource("28_e2yef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228.9238, -8.629971, -261.6417)
+
+[node name="FloatingPin27" parent="World Origin/FloatingPins" unique_id=1752110006 instance=ExtResource("28_e2yef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 378.5974, 90.36903, -261.6417)
+
+[node name="FloatingPin28" parent="World Origin/FloatingPins" unique_id=522933710 instance=ExtResource("28_e2yef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 495.72763, 57.42614, -315.9891)
+
+[node name="FloatingPin29" parent="World Origin/FloatingPins" unique_id=355954973 instance=ExtResource("28_e2yef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 460.92438, 119.08211, -419.63623)
+
+[node name="FloatingPin30" parent="World Origin/FloatingPins" unique_id=1310946389 instance=ExtResource("28_e2yef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.94095, 20.0831, -419.63623)
+
+[node name="FloatingPin31" parent="World Origin/FloatingPins" unique_id=2072836616 instance=ExtResource("28_e2yef")]
+transform = Transform3D(-0.9636193, 0, -0.26727864, 0, 1, 0, 0.26727864, 0, -0.9636193, 257.34616, 28.71307, -42.39736)
+
+[node name="FloatingPin32" parent="World Origin/FloatingPins" unique_id=1272331957 instance=ExtResource("28_e2yef")]
+transform = Transform3D(-0.9636193, 0, -0.26727864, 0, 1, 0, 0.26727864, 0, -0.9636193, 462.81427, -8.629971, 8.17231)
+
+[node name="FloatingPin33" parent="World Origin/FloatingPins" unique_id=349647601 instance=ExtResource("28_e2yef")]
+transform = Transform3D(-0.9636193, 0, -0.26727864, 0, 1, 0, 0.26727864, 0, -0.9636193, 318.58588, 90.36903, 48.17686)
+
+[node name="FloatingPin34" parent="World Origin/FloatingPins" unique_id=1004443905 instance=ExtResource("28_e2yef")]
+transform = Transform3D(-0.9636193, 0, -0.26727864, 0, 1, 0, 0.26727864, 0, -0.9636193, 220.24284, 57.42614, 131.85349)
+
+[node name="FloatingPin35" parent="World Origin/FloatingPins" unique_id=1993720564 instance=ExtResource("28_e2yef")]
+transform = Transform3D(-0.9636193, 0, -0.26727864, 0, 1, 0, 0.26727864, 0, -0.9636193, 281.48257, 119.08211, 222.4277)
+
+[node name="FloatingPin36" parent="World Origin/FloatingPins" unique_id=1136374177 instance=ExtResource("28_e2yef")]
+transform = Transform3D(-0.9636193, 0, -0.26727864, 0, 1, 0, 0.26727864, 0, -0.9636193, 584.0431, 20.0831, 138.50662)
 
 [node name="CameraHolder" type="Node3D" parent="." unique_id=854890325 node_paths=PackedStringArray("follow_target")]
 transform = Transform3D(1, 0, 0, 0, 0.9869942, -0.16075604, 0, 0.16075604, 0.9869942, 0, 24.623695, -77.10297)
@@ -255,6 +427,19 @@ metadata/_custom_type_script = "uid://8oxr6d7cduq1"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 
 [node name="Indicator" parent="." unique_id=1637378779 instance=ExtResource("11_oaptf")]
+
+[node name="CrowdCheerStageClear" type="AudioStreamPlayer" parent="." unique_id=197948142]
+stream = ExtResource("25_htquy")
+volume_db = 4.148
+bus = &"SFX"
+
+[node name="Platform" parent="." unique_id=1942441283 instance=ExtResource("26_17yxc")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -13.294508, -1.8800244, -33.38066)
+
+[node name="Barrier" parent="Platform" unique_id=886241040 instance=ExtResource("26_m675f")]
+transform = Transform3D(-2.6226832e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.6226832e-08, 0.038033724, 0.05003715, -0.02375412)
+rotation_amount = Vector3(0, -180, 0)
+move_over_time = 1.0
 
 [connection signal="body_entered" from="World Origin/Level/Pin Master/1" to="World Origin/Level/Pin Master/1" method="_on_body_entered"]
 [connection signal="body_entered" from="World Origin/Level/Pin Master/2" to="World Origin/Level/Pin Master/2" method="_on_body_entered"]
