@@ -76,3 +76,10 @@ var world_origin:WorldOrigin:
 
 var total_scene_completions : int = 0
 var total_pins_knocked : int = 0
+var stage_pins : Array[int] = [
+]
+func _ready():
+	for n in 10:
+		var x = n + 3
+		stage_pins.append(x*(x+1)/2)
+	print(stage_pins)

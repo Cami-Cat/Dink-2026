@@ -23,6 +23,9 @@ func _init() -> void:
 func _reset() -> void:
 	if resetting : return
 	resetting = true
+	if !Engine.is_editor_hint():
+		total_pins = GVar.stage_pins[GVar.total_scene_completions]
+		pin_spacing = remap(GVar.total_scene_completions,0,GVar.stage_pins.size(),1.3,1.05)
 	pins_knocked_over = 0
 	_clear_children()
 	if !is_node_ready(): await ready
@@ -33,7 +36,6 @@ func _reset() -> void:
 func _ready() -> void:
 	if !PIN_SCENE:
 		return
-	_reset()
 	return
 
 func _clear_children() -> void:
