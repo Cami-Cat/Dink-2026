@@ -118,7 +118,9 @@ func _handle_grounded_state_changed():
 		ball_hit_floor_sound.pitch_scale = randf_range(0.95,1.05)
 		ball_hit_floor_sound.volume_db = remap(linear_velocity.length(),0,30,-3,3)
 		ball_hit_floor_sound.play()
+
 func _input(event: InputEvent) -> void:
+	if GVar.is_menu_open : return
 	if Input.is_action_just_pressed("Click"):
 		if !can_drag : return
 		if dragging : return

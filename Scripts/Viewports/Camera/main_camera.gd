@@ -6,7 +6,7 @@ signal zoom_changed(percentage:float)
 signal camera_rotating(state:bool)
 
 @export var follow_target : Node3D
-@export var follow_distance : float = 10.0
+@export var follow_distance : float = 15.0
 @export var max_follow_distance : float = 15.0
 @export var min_follow_distance : float = 5.0
 @export var scroll_distance_change : float = 0.5
@@ -23,16 +23,19 @@ var orbit_angle_y: float = -PI
 var orbit_angle_x: float = 0.2
 
 var resetting : bool = false
+var following : bool = false
 
 func _ready() -> void:
-	
-	if !follow_target : return
 	add_to_group(CAMERA_GROUP)
 	return
 	
+func _do_follow(should_follow : bool) -> void:
+	following = should_follow
+	return
+	
 func _process(delta: float) -> void:
+	if !following || !follow_target : return
 	if resetting : return
-	if !follow_target: return
 	
 	var camera_offset := Vector3.FORWARD
 	camera_offset = camera_offset.rotated(Vector3.RIGHT, orbit_angle_x)
@@ -42,7 +45,6 @@ func _process(delta: float) -> void:
 	var distance_to_target = global_position.distance_to(target_pos)
 	
 	var target_speed = clamp(distance_to_target * follow_acceleration, -max_speed, max_speed)
-	#print(current_speed)
 	current_speed = move_toward(current_speed, target_speed, follow_acceleration * delta)
 	
 	global_position = global_position.move_toward(target_pos, current_speed * delta)
@@ -50,6 +52,7 @@ func _process(delta: float) -> void:
 	return
 
 func _input(event: InputEvent) -> void:
+	if GVar.is_menu_open : return
 	if Input.is_action_just_pressed("RightClick"):
 		is_orbiting = true
 		camera_rotating.emit(true)
@@ -64,7 +67,7 @@ func _input(event: InputEvent) -> void:
 		var rotation_amount : Vector2 = event.relative * deg_to_rad(rotation_speed)
 		
 		orbit_angle_y -= rotation_amount.x
-		orbit_angle_x = clamp(orbit_angle_x + rotation_amount.y, deg_to_rad(-15), deg_to_rad(80))
+		orbit_angle_x = clamp(orbit_angle_x + rotation_amount.y, deg_to_rad(-80), deg_to_rad(80))
 		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
@@ -79,17 +82,17 @@ func _input(event: InputEvent) -> void:
 func _reset() -> void:
 	resetting = true
 	await get_tree().physics_frame
-	global_position = follow_target.global_position
+	global_transform = follow_target.global_transform
 	current_speed = 0.0
-	resetting = false
-	await get_tree().process_frame
+	await get_tree().physics_frame
 	current = true
+	resetting = false
+	following = true
 	return
 
 
 func _on_character_controller_input_released(_position: Vector2) -> void:
 	$Shake_Hit._shake()
-
 
 func _on_character_controller_click_power_updated(to: float):
 	shakePower = to
