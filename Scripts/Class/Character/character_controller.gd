@@ -4,7 +4,7 @@ class_name CharacterController extends RigidBody3D
 @onready var rolling_sound: AudioStreamPlayer3D = $RollingSound
 @onready var ball_hit_floor_sound: AudioStreamPlayer3D = $BallHitFloorSound
 @onready var ball_grab_sound: AudioStreamPlayer = $BallGrabSound
-@onready var main_camera:FollowCamera = get_tree().get_first_node_in_group("MainCamera")
+@onready var main_camera:CameraHolder = get_tree().get_first_node_in_group(CameraHolder.CAMERA_HOLDER_GROUP)
 
 const CHARACTER_GROUP_NAME : StringName = &"Character"
 
@@ -142,7 +142,7 @@ func _input(event: InputEvent) -> void:
 		var world_drag : Vector3 = cam_right * drag.x - cam_forward * drag.y
 		var direction:Vector3 = world_drag.normalized()
 		
-		mouse_moved.emit(event.position)
+		mouse_moved.emit(event.global_position)
 		click_power = clampf((drag.length() / distance_for_max_power), min_click_power, max_click_power)
 		
 		shoot_direction = Vector3(direction.normalized().x, 0.0, direction.normalized().z)
@@ -167,13 +167,15 @@ func _on_body_exited(body : Node3D) -> void:
 	pass
 
 
-func _on_ball_hit_pin(velocity: float , pin:Pin) -> void:
+func _on_ball_hit_pin(speed: float , pin:Pin) -> void:
 	$BallHit.restart()
 	$BallHit.emitting = true
 	if has_hit_pin_sound == false:
 		GFnc.apply_hitlag(0.15)
 		var dir:Vector3 = (global_position - pin.global_position).normalized()
-		var _velocity = dir * velocity * 0.1
+		dir.y = 0
+		var _velocity = dir * min(speed,20) * 0.1
+		print(speed)
 		pin.apply_impulse(_velocity,global_position)
 		crowd_yay_sound.play()
 		has_hit_pin_sound = true

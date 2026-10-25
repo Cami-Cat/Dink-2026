@@ -19,6 +19,9 @@ var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func _init(pCamera):
 	camera = pCamera
+	update_origin()
+
+func update_origin():
 	origin = camera.position
 
 func _update(delta):

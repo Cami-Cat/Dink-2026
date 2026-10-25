@@ -1,11 +1,11 @@
 class_name CameraRotateUI
 extends Control
 
-@onready var main_camera:FollowCamera = get_tree().get_first_node_in_group("MainCamera")
+@onready var main_camera_holder:CameraHolder = get_tree().get_first_node_in_group(CameraHolder.CAMERA_HOLDER_GROUP)
 
 func _ready() -> void:
 	visible = false
-	main_camera.camera_rotating.connect(_handle_camera_rotating)
+	main_camera_holder.camera_rotating.connect(_handle_camera_rotating)
 
 func _handle_camera_rotating(state:bool):
 	if state:

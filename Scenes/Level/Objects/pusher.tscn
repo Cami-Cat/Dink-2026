@@ -19,7 +19,9 @@ move_to = Vector3(-1.075, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019388199, 0, -0.011490941)
 mesh = SubResource("BoxMesh_amx8r")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1414087295]
+[node name="StaticBody3D" type="RigidBody3D" parent="MeshInstance3D" unique_id=625414262]
+freeze = true
+freeze_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=551425336]
 shape = SubResource("ConvexPolygonShape3D_3r1x1")

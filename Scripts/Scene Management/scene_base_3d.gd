@@ -7,6 +7,7 @@ const SCENE_GROUP : StringName = &"Scene"
 
 signal scene_completed(new_stage : int)
 signal knocked_over_pins_increased(new_count : int)
+signal player_reset()
 
 var stage_num : int = 0
 var required_pins : int = 0:
@@ -29,8 +30,8 @@ func _ready() -> void:
 	_teleport_player_to_spawn_point()
 	_connect_player()
 	_connect_pins()
-	var camera : FollowCamera = get_tree().get_first_node_in_group(FollowCamera.CAMERA_GROUP)
-	camera_pause_position = camera.global_transform
+	var camera_holder : CameraHolder = get_tree().get_first_node_in_group(CameraHolder.CAMERA_HOLDER_GROUP)
+	camera_pause_position = camera_holder.global_transform
 	menu._get_play_button().pressed.connect(_on_play_pressed)
 	menu._get_quit_button().pressed.connect(_on_quit_pressed)
 	GVar.is_menu_open = true
@@ -62,12 +63,12 @@ func _teleport_player_to_spawn_point() -> void:
 	if !player :return
 	player.global_position = spawn_point_position
 	player.freeze = true
-	return
+	player_reset.emit()
 
 func _respawn_player() -> void:
 	if stage_completed : return
 	var player : CharacterController = get_tree().get_first_node_in_group(CharacterController.CHARACTER_GROUP_NAME)
-	var camera : FollowCamera = get_tree().get_first_node_in_group(FollowCamera.CAMERA_GROUP)
+	var camera : CameraHolder = get_tree().get_first_node_in_group(CameraHolder.CAMERA_HOLDER_GROUP)
 	_teleport_player_to_spawn_point()
 	player._reset()
 	camera._reset()
@@ -83,7 +84,7 @@ func _on_stage_complete() -> void:
 	stage_completed = true
 	GVar.total_scene_completions += 1
 	stage_num = GVar.total_scene_completions
-	required_pins += clamp(required_pins + 1, 0, 10)
+	required_pins = round(GVar.stage_pins[GVar.total_scene_completions] * 0.8)
 	required_pins_changed.emit(required_pins)
 	_reset()
 	return
@@ -91,7 +92,7 @@ func _on_stage_complete() -> void:
 func _reset() -> void:
 	await get_tree().create_timer(time_before_reset).timeout
 	var player : CharacterController = get_tree().get_first_node_in_group(CharacterController.CHARACTER_GROUP_NAME)
-	var camera : FollowCamera = get_tree().get_first_node_in_group(FollowCamera.CAMERA_GROUP)
+	var camera_holder : CameraHolder = get_tree().get_first_node_in_group(CameraHolder.CAMERA_HOLDER_GROUP)
 	var pin_master : PinMaster = get_tree().get_first_node_in_group(PinMaster.PIN_GROUP)
 	pin_master._reset()
 	if ball_launches > 0:
@@ -100,7 +101,7 @@ func _reset() -> void:
 		player._reset()
 		ball_launches = 0
 		player.freeze = false
-		camera._reset()
+		camera_holder._reset()
 	scene_completed.emit(GVar.total_scene_completions)
 	stage_completed = false
 	return
@@ -109,7 +110,7 @@ func _input(event : InputEvent) -> void:
 	if event is InputEventKey:
 		if event.is_echo(): return
 		if event.keycode == KEY_ESCAPE && event.is_pressed():
-			var camera : FollowCamera = get_tree().get_first_node_in_group(FollowCamera.CAMERA_GROUP)
+			var camera : CameraHolder = get_tree().get_first_node_in_group(CameraHolder.CAMERA_HOLDER_GROUP)
 			camera.following = false
 			camera.global_transform = camera_pause_position
 			GVar.is_menu_open = true
@@ -117,7 +118,7 @@ func _input(event : InputEvent) -> void:
 			return
 
 func _on_play_pressed() -> void:
-	var camera : FollowCamera = get_tree().get_first_node_in_group(FollowCamera.CAMERA_GROUP)
+	var camera : CameraHolder = get_tree().get_first_node_in_group(CameraHolder.CAMERA_HOLDER_GROUP)
 	camera.following = true
 	menu.hide()
 	GVar.is_menu_open = false
