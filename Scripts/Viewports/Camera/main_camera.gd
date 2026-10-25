@@ -20,6 +20,7 @@ func _reset() -> void:
 
 func _on_character_controller_input_released(_position: Vector2) -> void:
 	shake_hit._shake()
-
+	$".".fov = 75
 func _on_character_controller_click_power_updated(to: float):
 	shakePower = to
+	$".".fov = remap(shakePower, 0.5,1.5,75,100)
