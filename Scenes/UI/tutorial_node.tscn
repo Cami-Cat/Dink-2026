@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://hv6hbj7xyn24"]
+
+[ext_resource type="Script" uid="uid://yi1xt0chh8sc" path="res://Scenes/UI/tutorial_node.gd" id="1_8ib2s"]
+[ext_resource type="Texture2D" uid="uid://wrcnidl32vjd" path="res://Assets/Sprites/mouse_left.png" id="1_w0o5r"]
+
+[node name="TutorialNode" type="Control" unique_id=1695356432]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+script = ExtResource("1_8ib2s")
+
+[node name="MouseIcon" type="TextureRect" parent="." unique_id=339698782]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_w0o5r")
+expand_mode = 1

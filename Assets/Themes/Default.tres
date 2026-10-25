@@ -3,10 +3,20 @@
 [ext_resource type="FontFile" uid="uid://b7ul0wble7grr" path="res://Assets/Fonts/varsity_regular.ttf" id="1_qjduq"]
 [ext_resource type="StyleBox" uid="uid://3na6sgghdcma" path="res://Assets/Themes/style_box_textured_hovered.tres" id="2_ongpu"]
 [ext_resource type="StyleBox" uid="uid://w55skukmxr1f" path="res://Assets/Themes/style_box_textured_normal.tres" id="3_mkp3d"]
+[ext_resource type="StyleBox" uid="uid://7ewn350gtq6d" path="res://Assets/Themes/style_box_textured_pressed.tres" id="4_mkp3d"]
 
 [resource]
+Button/colors/font_color = Color(0.2418, 0.40325996, 0.78, 1)
+Button/colors/font_hover_color = Color(0.29639998, 0.44147998, 0.78, 1)
+Button/colors/font_hover_pressed_color = Color(0.20279999, 0.37595993, 0.78, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(0.20392157, 0.3764706, 0.78039217, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/constants/outline_size = 4
+Button/font_sizes/font_size = 64
 Button/fonts/font = ExtResource("1_qjduq")
 Button/styles/hover = ExtResource("2_ongpu")
 Button/styles/normal = ExtResource("3_mkp3d")
+Button/styles/pressed = ExtResource("4_mkp3d")
 Label/fonts/font = ExtResource("1_qjduq")
 RichTextLabel/fonts/normal_font = ExtResource("1_qjduq")

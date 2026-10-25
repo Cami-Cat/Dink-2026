@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://7ewn350gtq6d"]
+
+[ext_resource type="Texture2D" uid="uid://bvvyscv05hpub" path="res://Assets/Sprites/button_square_depth_flat.png" id="1_lm2ru"]
+
+[resource]
+texture = ExtResource("1_lm2ru")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.8, 0.8, 0.8, 1)

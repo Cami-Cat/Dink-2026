@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b588lkljesnen" path="res://Scenes/UI/Camera/camera_zoom.tscn" id="2_pclsy"]
 [ext_resource type="PackedScene" uid="uid://c5b1bjg5r2xkw" path="res://Scenes/UI/Camera/camera_rotate.tscn" id="3_b2hoh"]
 [ext_resource type="PackedScene" uid="uid://bgvics4yayohv" path="res://Scenes/UI/Game/pin_tracker.tscn" id="4_h3s1k"]
+[ext_resource type="PackedScene" uid="uid://hv6hbj7xyn24" path="res://Scenes/UI/tutorial_node.tscn" id="5_rad5t"]
 
 [node name="UiMain" type="Control" unique_id=276468403]
 layout_mode = 3
@@ -45,3 +46,10 @@ offset_bottom = -26.0
 grow_horizontal = 1
 grow_vertical = 0
 mouse_filter = 2
+
+[node name="TutorialNode" parent="Control" unique_id=1695356432 instance=ExtResource("5_rad5t")]
+layout_mode = 1
+offset_left = 195.0
+offset_top = -140.0
+offset_right = 323.0
+offset_bottom = -12.0
