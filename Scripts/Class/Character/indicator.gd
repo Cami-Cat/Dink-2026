@@ -7,7 +7,7 @@ class_name Indicator extends Node3D
 var M_INDICATOR:StandardMaterial3D = preload("res://Assets/Meshes/Indicator/M_Indicator.tres")
 var last_click_power:float = 1.0
 
-const MAX_LENGTH : float = 40.0
+const MAX_LENGTH : float = 200.0
 const MIN_LENGTH : float = 0.0
 
 var current_length : float = 0.0

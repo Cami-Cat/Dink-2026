@@ -134,6 +134,7 @@ func _input(event: InputEvent) -> void:
 		dragging = false
 		#can_drag = false
 		input_released.emit(get_viewport().get_mouse_position())
+		$ImpactHit.emitting = true
 	if event is InputEventMouseMotion:
 		if !dragging: return
 		var cam_forward:Vector3 = (-main_camera.global_basis.z).slide(Vector3.UP).normalized()
