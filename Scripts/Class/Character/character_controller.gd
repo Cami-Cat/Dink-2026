@@ -54,6 +54,7 @@ var timing_out : bool = false
 func _reset() -> void:
 	has_hit_pin_sound = false
 	can_drag = true
+	timeout_timer.stop()
 	timing_out = false
 	return
 

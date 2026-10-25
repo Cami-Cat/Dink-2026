@@ -26,17 +26,16 @@
 [ext_resource type="Texture2D" uid="uid://dqc23bxlrudgk" path="res://Assets/Sprites/t_drinkdevs_banner.png" id="15_7u8y2"]
 [ext_resource type="Script" uid="uid://d3s6dtcvemo62" path="res://Scenes/BaseScene/camera_holder.gd" id="20_5svqw"]
 [ext_resource type="AudioStream" uid="uid://dfc302bs57jqm" path="res://Assets/Audio/SFX/Wii Sports - Nice Shot - QuickSounds.com.mp3" id="25_htquy"]
-[ext_resource type="PackedScene" uid="uid://448c7svgmuqr" path="res://Scenes/Level/Objects/platform.tscn" id="26_17yxc"]
 [ext_resource type="PackedScene" uid="uid://doiuexinwftmg" path="res://Scenes/Level/Objects/barrier.tscn" id="26_m675f"]
 [ext_resource type="PackedScene" uid="uid://c8nd7k5ttugqr" path="res://Scenes/Level/floating_pin.tscn" id="28_e2yef"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7u8y2"]
+size = Vector3(76, 9.345, 1.595)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_db7i8"]
 size = Vector3(76, 9.345, 1.595)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y52jt"]
-size = Vector3(76, 9.345, 1.595)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wmubx"]
 size = Vector3(76, 9.345, 1.595)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_htquy"]
@@ -54,11 +53,14 @@ emission_texture = ExtResource("15_7u8y2")
 material = SubResource("StandardMaterial3D_usqqe")
 size = Vector2(10, 10)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_76s2b"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_wmubx"]
 size = Vector3(10, 9.345, 1.595)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_pywqh"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_76s2b"]
 size = Vector3(500, 1, 500)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pywqh"]
+size = Vector3(500, 100, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3abxi"]
 size = Vector3(500, 100, 1)
@@ -67,9 +69,6 @@ size = Vector3(500, 100, 1)
 size = Vector3(500, 100, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wlm4x"]
-size = Vector3(500, 100, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ga0qg"]
 size = Vector3(500, 100, 1)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6opk0"]
@@ -119,17 +118,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -87.216
 trigger_on_enter = [NodePath("../Pin Camera")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@65623" type="CollisionShape3D" parent="World Origin/Level/SideCamTriggerArea" unique_id=1976566368]
-shape = SubResource("BoxShape3D_db7i8")
+[node name="@CollisionShape3D@23763" type="CollisionShape3D" parent="World Origin/Level/SideCamTriggerArea" unique_id=1668281743]
+shape = SubResource("BoxShape3D_7u8y2")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="Trigger Area2" parent="World Origin/Level" unique_id=1637487406 node_paths=PackedStringArray("trigger_on_enter") instance=ExtResource("7_ekuh2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -33.168198)
-trigger_on_enter = [NodePath("../Pusher"), NodePath("../../../Platform/Barrier")]
+trigger_on_enter = [NodePath("../Pusher"), NodePath("../../../Barrier")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@65625" type="CollisionShape3D" parent="World Origin/Level/Trigger Area2" unique_id=668609169]
-shape = SubResource("BoxShape3D_y52jt")
+[node name="@CollisionShape3D@23765" type="CollisionShape3D" parent="World Origin/Level/Trigger Area2" unique_id=588453241]
+shape = SubResource("BoxShape3D_db7i8")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="Trigger Area3" parent="World Origin/Level" unique_id=491828337 node_paths=PackedStringArray("trigger_on_enter") instance=ExtResource("7_ekuh2")]
@@ -137,14 +136,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1959902, 2.0920439, -60.044
 trigger_on_enter = [NodePath("../Pusher2")]
 area_size = Vector3(76, 9.345, 1.595)
 
-[node name="@CollisionShape3D@65627" type="CollisionShape3D" parent="World Origin/Level/Trigger Area3" unique_id=1011290037]
-shape = SubResource("BoxShape3D_wmubx")
+[node name="@CollisionShape3D@23767" type="CollisionShape3D" parent="World Origin/Level/Trigger Area3" unique_id=535669595]
+shape = SubResource("BoxShape3D_y52jt")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="Pusher" parent="World Origin/Level" unique_id=2033328119 instance=ExtResource("7_4l7u4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.564003, 4.535224, -47.586273)
 move_to = Vector3(-40.54, 0, 0)
-required_stage = 1
+required_stage = 2
 
 [node name="Pusher2" parent="World Origin/Level" unique_id=1396371267 instance=ExtResource("7_4l7u4")]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, -39.223557, 4.535224, -70.58627)
@@ -234,8 +233,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18233204, 2.5247445, -65.8
 trigger_on_enter = [NodePath("../CrowdOh")]
 area_size = Vector3(10, 9.345, 1.595)
 
-[node name="@CollisionShape3D@65629" type="CollisionShape3D" parent="World Origin/Level/CrowdExcitmentTrigger" unique_id=948936642]
-shape = SubResource("BoxShape3D_76s2b")
+[node name="@CollisionShape3D@23769" type="CollisionShape3D" parent="World Origin/Level/CrowdExcitmentTrigger" unique_id=1747691921]
+shape = SubResource("BoxShape3D_wmubx")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="CrowdOh" parent="World Origin/Level" unique_id=1755318309 instance=ExtResource("12_17h01")]
@@ -255,8 +254,8 @@ trigger_on_enter = [NodePath("../../CrowdAw"), NodePath("../../../../Character C
 area_size = Vector3(500, 1, 500)
 metadata/_custom_type_script = "uid://sydlavbpat37"
 
-[node name="@CollisionShape3D@65631" type="CollisionShape3D" parent="World Origin/Level/CrowdSadTriggers/CrowdSadTrigger" unique_id=797779743]
-shape = SubResource("BoxShape3D_pywqh")
+[node name="@CollisionShape3D@23771" type="CollisionShape3D" parent="World Origin/Level/CrowdSadTriggers/CrowdSadTrigger" unique_id=1191060204]
+shape = SubResource("BoxShape3D_76s2b")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="CrowdSadTrigger2" type="Area3D" parent="World Origin/Level/CrowdSadTriggers" unique_id=915021751 node_paths=PackedStringArray("trigger_on_enter")]
@@ -266,8 +265,8 @@ trigger_on_enter = [NodePath("../../CrowdAw"), NodePath("../../../../Character C
 area_size = Vector3(500, 100, 1)
 metadata/_custom_type_script = "uid://sydlavbpat37"
 
-[node name="@CollisionShape3D@65633" type="CollisionShape3D" parent="World Origin/Level/CrowdSadTriggers/CrowdSadTrigger2" unique_id=2041935600]
-shape = SubResource("BoxShape3D_3abxi")
+[node name="@CollisionShape3D@23773" type="CollisionShape3D" parent="World Origin/Level/CrowdSadTriggers/CrowdSadTrigger2" unique_id=1924259291]
+shape = SubResource("BoxShape3D_pywqh")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="CrowdSadTrigger3" type="Area3D" parent="World Origin/Level/CrowdSadTriggers" unique_id=380227913 node_paths=PackedStringArray("trigger_on_enter")]
@@ -277,8 +276,8 @@ trigger_on_enter = [NodePath("../../CrowdAw"), NodePath("../../../../Character C
 area_size = Vector3(500, 100, 1)
 metadata/_custom_type_script = "uid://sydlavbpat37"
 
-[node name="@CollisionShape3D@65635" type="CollisionShape3D" parent="World Origin/Level/CrowdSadTriggers/CrowdSadTrigger3" unique_id=475889019]
-shape = SubResource("BoxShape3D_44pwp")
+[node name="@CollisionShape3D@23775" type="CollisionShape3D" parent="World Origin/Level/CrowdSadTriggers/CrowdSadTrigger3" unique_id=892193408]
+shape = SubResource("BoxShape3D_3abxi")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="CrowdSadTrigger4" type="Area3D" parent="World Origin/Level/CrowdSadTriggers" unique_id=1221295009 node_paths=PackedStringArray("trigger_on_enter")]
@@ -288,8 +287,8 @@ trigger_on_enter = [NodePath("../../CrowdAw"), NodePath("../../../../Character C
 area_size = Vector3(500, 100, 1)
 metadata/_custom_type_script = "uid://sydlavbpat37"
 
-[node name="@CollisionShape3D@65637" type="CollisionShape3D" parent="World Origin/Level/CrowdSadTriggers/CrowdSadTrigger4" unique_id=1102192640]
-shape = SubResource("BoxShape3D_wlm4x")
+[node name="@CollisionShape3D@23777" type="CollisionShape3D" parent="World Origin/Level/CrowdSadTriggers/CrowdSadTrigger4" unique_id=1651704200]
+shape = SubResource("BoxShape3D_44pwp")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="CrowdSadTrigger5" type="Area3D" parent="World Origin/Level/CrowdSadTriggers" unique_id=1013830359 node_paths=PackedStringArray("trigger_on_enter")]
@@ -299,8 +298,8 @@ trigger_on_enter = [NodePath("../../CrowdAw"), NodePath("../../../../Character C
 area_size = Vector3(500, 100, 1)
 metadata/_custom_type_script = "uid://sydlavbpat37"
 
-[node name="@CollisionShape3D@65639" type="CollisionShape3D" parent="World Origin/Level/CrowdSadTriggers/CrowdSadTrigger5" unique_id=1534918916]
-shape = SubResource("BoxShape3D_ga0qg")
+[node name="@CollisionShape3D@23779" type="CollisionShape3D" parent="World Origin/Level/CrowdSadTriggers/CrowdSadTrigger5" unique_id=594956285]
+shape = SubResource("BoxShape3D_wlm4x")
 debug_color = Color(0.875, 0, 0.236, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World Origin" unique_id=333920919]
@@ -447,13 +446,11 @@ stream = ExtResource("25_htquy")
 volume_db = 4.148
 bus = &"SFX"
 
-[node name="Platform" parent="." unique_id=1942441283 instance=ExtResource("26_17yxc")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -13.294508, -2.0615396, -33.38066)
-
-[node name="Barrier" parent="Platform" unique_id=886241040 instance=ExtResource("26_m675f")]
-transform = Transform3D(-2.6226832e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.6226832e-08, 0.038033724, 0.05003715, -0.02375412)
+[node name="Barrier" parent="." unique_id=886241040 instance=ExtResource("26_m675f")]
+transform = Transform3D(-1.3113416e-07, 0, 3, 0, 3, 0, -3, 0, -1.3113416e-07, -13.10434, -1.8113539, -33.49943)
 rotation_amount = Vector3(0, -180, 0)
 move_over_time = 1.0
+required_stage = 1
 
 [connection signal="body_entered" from="World Origin/Level/Pin Master/1" to="World Origin/Level/Pin Master/1" method="_on_body_entered"]
 [connection signal="body_entered" from="World Origin/Level/Pin Master/2" to="World Origin/Level/Pin Master/2" method="_on_body_entered"]

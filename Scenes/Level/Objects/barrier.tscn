@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cfijex3wwak80" path="res://Scenes/Level/Objects/barrier.gd" id="1_6y6lm"]
 [ext_resource type="ArrayMesh" uid="uid://5rffd7gllspb" path="res://Assets/Meshes/Obstacles/Barrier/sm_barrier_flag.res" id="2_6y6lm"]
 [ext_resource type="ArrayMesh" uid="uid://clyrdyk0ak5ok" path="res://Assets/Meshes/Obstacles/Barrier/sm_barrier_post.res" id="3_c77u6"]
+[ext_resource type="PackedScene" uid="uid://448c7svgmuqr" path="res://Scenes/Level/Objects/platform.tscn" id="5_c77u6"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2xjcp"]
 points = PackedVector3Array(5.855452, 0.09187138, 0.08428274, 5.855452, 0.061556876, 0.11352576, 5.855452, 0.09187138, 0.015704304, -0.9503287, 0.09187138, 0.08428274, 5.855452, -0.11735263, 0.11351619, -0.9503287, 0.061556876, 0.11352576, 5.855452, -0.14764369, 0.015704304, -0.9503287, 0.09187138, 0.015704304, 5.855452, -0.14764369, 0.08428274, -0.9503287, -0.11735263, 0.11351619, -0.9503287, -0.14764369, 0.015704304, -0.9503287, -0.14764369, 0.08428274)
@@ -44,3 +45,6 @@ shape = SubResource("ConvexPolygonShape3D_6y6lm")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="RigidBody3D" unique_id=749815587]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1920929e-07, 0)
 shape = SubResource("ConvexPolygonShape3D_c77u6")
+
+[node name="Platform" parent="." unique_id=1942441283 instance=ExtResource("5_c77u6")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
