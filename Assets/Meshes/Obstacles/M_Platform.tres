@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://br5t7lyckseh"]
+
+[ext_resource type="Texture2D" uid="uid://cs2jyngagvufx" path="res://Assets/Meshes/Obstacles/T_FloatingBoard.png" id="1_nfiar"]
+
+[resource]
+albedo_texture = ExtResource("1_nfiar")

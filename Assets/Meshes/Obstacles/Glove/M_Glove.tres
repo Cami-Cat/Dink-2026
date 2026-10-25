@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://blrebgeych1oi"]
+
+[ext_resource type="Texture2D" uid="uid://my7g8ybja701" path="res://Assets/Meshes/Obstacles/Glove/T_Glove_BaseColour.png" id="1_ofqef"]
+
+[resource]
+albedo_texture = ExtResource("1_ofqef")

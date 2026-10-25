@@ -2,11 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dk14vvhiuwc7a" path="res://Scripts/UI/Menu/Main Menu/menu.gd" id="1_nhmg3"]
 [ext_resource type="Theme" uid="uid://d2g7lhon7onud" path="res://Assets/Themes/Default.tres" id="2_uk6bn"]
-[ext_resource type="Shader" uid="uid://buxs8ygqjiy4c" path="res://Scripts/Resources/Materials/Master Materials/tilt.gdshader" id="3_wuk0b"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uuwsw"]
-shader = ExtResource("3_wuk0b")
-shader_parameter/tilt = 0.3200000152
 
 [node name="Menu" type="Control" unique_id=1258137577]
 custom_minimum_size = Vector2(800, 700)
@@ -44,7 +39,9 @@ offset_bottom = 107.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_uk6bn")
-theme_override_font_sizes/font_size = 36
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 70
 text = "BOWLING SUPER LUCKY STRIKE 5000"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -70,10 +67,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -28.0
-offset_top = -49.5
-offset_right = 28.0
-offset_bottom = 144.0
+offset_left = -115.0
+offset_top = -146.69998
+offset_right = 115.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 19
@@ -94,13 +91,3 @@ custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 theme = ExtResource("2_uk6bn")
 text = "Quit"
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1590079524]
-material = SubResource("ShaderMaterial_uuwsw")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2

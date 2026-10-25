@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dnf045cc46kud"
-path="res://.godot/imported/SM_Barrier.glb-f84d89523f6c23287a9ab780365c08f8.scn"
+uid="uid://ckhivt6qjsh2n"
+path="res://.godot/imported/SM_BarrierBar.glb-e320eaaff7cf9081fc9171eb6648b8ff.scn"
 
 [deps]
 
-source_file="res://Assets/Meshes/Obstacles/SM_Barrier.glb"
-dest_files=["res://.godot/imported/SM_Barrier.glb-f84d89523f6c23287a9ab780365c08f8.scn"]
+source_file="res://Assets/Meshes/Obstacles/Barrier/SM_BarrierBar.glb"
+dest_files=["res://.godot/imported/SM_BarrierBar.glb-e320eaaff7cf9081fc9171eb6648b8ff.scn"]
 
 [params]
 
@@ -40,33 +40,22 @@ materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={
+"materials": {
+"M_Barrier": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/Meshes/Obstacles/Barrier/M_Barrier.tres",
+"use_external/path": "uid://c3d4ylx1tnil"
+}
+},
 "meshes": {
-"SM_Barrier_Plane_010": {
+"SM_BarrierBar_Plane_011": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/Meshes/Obstacles/sm_barrier_bar.res",
+"save_to_file/fallback_path": "res://Assets/Meshes/Obstacles/Barrier/sm_barrier_bar.res",
 "save_to_file/path": "uid://dby0l1npm6c2s"
-},
-"SM_Barrier_Plane_012": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/Meshes/Obstacles/SM_Barrier_Plane_012.res",
-"save_to_file/path": "uid://clyrdyk0ak5ok"
-},
-"SM_Barrier_Plane_013": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/Meshes/Obstacles/SM_Barrier_Plane_013.res",
-"save_to_file/path": "uid://5rffd7gllspb"
 }
 }
 }

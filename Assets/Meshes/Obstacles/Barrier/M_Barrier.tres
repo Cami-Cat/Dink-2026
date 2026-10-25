@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c3d4ylx1tnil"]
+
+[ext_resource type="Texture2D" uid="uid://diivhh57ipkk0" path="res://Assets/Meshes/Obstacles/Barrier/T_Barrier.png" id="1_6eq70"]
+
+[resource]
+albedo_texture = ExtResource("1_6eq70")

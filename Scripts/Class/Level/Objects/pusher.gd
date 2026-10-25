@@ -1,6 +1,6 @@
 class_name Pusher extends ObjectBase
 
-@onready var collision_shape_3d: CollisionShape3D = $MeshInstance3D/StaticBody3D/CollisionShape3D
+#@onready var collision_shape_3d: CollisionShape3D = $MeshInstance3D/StaticBody3D/CollisionShape3D
 
 @export_group("Setup")
 @export var move_to : Vector3 :
