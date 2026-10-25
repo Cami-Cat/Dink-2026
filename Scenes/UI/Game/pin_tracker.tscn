@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://d4ffcc6jb8p7" path="res://Scenes/UI/Game/pin_tracker.gd" id="1_cl5la"]
 [ext_resource type="Texture2D" uid="uid://bouuh5dsowx3w" path="res://Assets/Sprites/T_Brown_Rounded_9Rect.png" id="1_x50px"]
 [ext_resource type="Texture2D" uid="uid://d36ids3c1lvk0" path="res://Assets/Sprites/T_Pin_Icon.png" id="2_cl5la"]
+[ext_resource type="AudioStream" uid="uid://bqvlptawof6lb" path="res://Assets/Audio/SFX/PinTickRando.tres" id="4_83wxa"]
+[ext_resource type="AudioStream" uid="uid://dd5ftjbi0mnig" path="res://Assets/Audio/SFX/killstreak.wav" id="5_p6f3n"]
 
 [node name="PinTracker" type="Control" unique_id=1962839099]
 layout_mode = 3
@@ -61,3 +63,17 @@ text = "X OF Y"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PinTick" type="AudioStreamPlayer2D" parent="." unique_id=1626309322]
+stream = ExtResource("4_83wxa")
+volume_db = 0.416
+attenuation = 0.0026680436
+panning_strength = 0.0
+bus = &"SFX"
+
+[node name="CrowdCheerStageClear" type="AudioStreamPlayer2D" parent="PinTick" unique_id=63913511]
+stream = ExtResource("5_p6f3n")
+volume_db = 4.148
+attenuation = 0.0026680436
+panning_strength = 0.0
+bus = &"SFX"

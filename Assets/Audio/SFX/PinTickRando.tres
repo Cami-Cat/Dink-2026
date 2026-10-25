@@ -1,0 +1,10 @@
+[gd_resource type="AudioStreamRandomizer" format=3 uid="uid://bqvlptawof6lb"]
+
+[ext_resource type="AudioStream" uid="uid://bf05okp8uvc84" path="res://Assets/Audio/SFX/spelltick_01.wav" id="1_e6arx"]
+[ext_resource type="AudioStream" uid="uid://dbu42v1a2rguw" path="res://Assets/Audio/SFX/spelltick_02.wav" id="1_jv6x6"]
+
+[resource]
+playback_mode = 2
+streams_count = 2
+stream_0/stream = ExtResource("1_e6arx")
+stream_1/stream = ExtResource("1_jv6x6")
